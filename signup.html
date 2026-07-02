@@ -165,6 +165,16 @@
       .side-list { display:none; }
       .form-side { padding: 40px 6vw; }
     }
+    @media (max-width: 480px) {
+      .side h1 { font-size: 1.5rem; }
+      .form-side { padding: 28px 5vw; }
+      .auth-card { max-width: 100%; }
+      .oauth-row { flex-direction: column; }
+      .waitlist-mini { flex-direction: column; }
+      .waitlist-mini input, .waitlist-mini button { width: 100%; }
+      footer { flex-direction: column; align-items: flex-start; }
+      footer .flinks { flex-wrap: wrap; gap: 14px; }
+    }
   </style>
 </head>
 <body>
