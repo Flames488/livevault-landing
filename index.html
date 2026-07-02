@@ -15,14 +15,35 @@
   <meta property="og:description" content="Reduce patient no-shows by 40% with AI-powered reminders. Manage appointments, patients, and billing — built for Nigerian healthcare." />
   <meta property="og:url" content="https://livevault.cloud/" />
   <meta property="og:image" content="https://livevault.cloud/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:site_name" content="Vitar by LiveVault" />
+  <meta property="og:locale" content="en_NG" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Vitar — Smart Clinic Management | livevault.cloud" />
   <meta name="twitter:description" content="Nigerian clinic management software. 30-day free trial. Reduce no-shows by 40%." />
+  <meta name="twitter:image" content="https://livevault.cloud/twitter-card.png" />
 
   <meta name="geo.region" content="NG" />
   <meta name="geo.placename" content="Nigeria" />
   <meta name="theme-color" content="#0d9488" />
+
+  <!-- Favicons & App Icons -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+
+  <!-- PWA / mobile chrome -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Vitar" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="format-detection" content="telephone=no" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Sora:wght@700;800&display=swap" rel="stylesheet" />
@@ -425,10 +446,42 @@
     footer nav a:hover { color: var(--teal-lt); }
 
     /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .section { padding: 64px 6vw; }
+      .hero { padding: 64px 6vw 48px; min-height: auto; }
+      .pricing-grid { max-width: 640px; }
+    }
+
     @media (max-width: 600px) {
-      .stat { min-width: 140px; }
-      .hero h1 { font-size: 2rem; }
-      .section { padding: 60px 5vw; }
+      nav { padding: 0 4vw; height: 58px; }
+      .nav-logo span { font-size: 1.05rem; }
+      .nav-logo span em { display: none; }
+      .nav-cta { padding: 8px 16px; font-size: 0.78rem; }
+
+      .hero { padding: 48px 5vw 40px; }
+      .hero h1 { font-size: 2.1rem; }
+      .hero-sub { font-size: 0.95rem; }
+      .hero-actions { flex-direction: column; width: 100%; }
+      .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+
+      .stat { min-width: 45%; padding: 16px; }
+      .stat-num { font-size: 1.5rem; }
+
+      .section { padding: 52px 6vw; }
+      .section-title { font-size: 1.6rem; }
+      .section-sub { margin-bottom: 32px; }
+
+      .email-form { flex-direction: column; }
+      .email-form input, .email-form button { width: 100%; }
+
+      footer { flex-direction: column; align-items: flex-start; text-align: left; }
+      footer nav { gap: 16px; }
+    }
+
+    @media (max-width: 380px) {
+      .hero h1 { font-size: 1.8rem; }
+      .stat { min-width: 100%; border-right: none; border-bottom: 1px solid rgba(13,148,136,0.1); }
+      .stat:last-child { border-bottom: none; }
     }
 
     /* ── SCROLL ANIMATIONS ── */
