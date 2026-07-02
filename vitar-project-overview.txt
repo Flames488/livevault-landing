@@ -1,0 +1,78 @@
+VITAR BY LIVEVAULT — PROJECT OVERVIEW
+(Use this as raw material to write a pitch message, deck, or email)
+
+WHAT IT IS
+Vitar is a clinic management and appointment-scheduling platform built by
+LiveVault, a Nigerian software company, for Nigerian private clinics.
+It replaces the notebook-and-phone-calls way most small clinics run
+bookings with one simple, Naira-priced online system.
+
+THE PROBLEM
+Private clinics in Nigeria lose real money to:
+- Missed appointments (patients forget, or were never reminded)
+- Manual, error-prone booking by phone or notebook
+- Double-booked doctors and empty slots that go unnoticed until month-end
+- No easy way to see which patients are likely to skip their next visit
+- Paper patient records that slow down check-in and follow-up
+
+THE SOLUTION
+Vitar gives a clinic one dashboard to run its front desk from:
+- Patients book online in under a minute — no app download required
+- Automatic WhatsApp, SMS, and email reminders bring patients back on time
+- No-show risk scoring flags which patients staff should call first
+- QR code check-in pulls up a patient's full history instantly
+- Analytics show bookings and attendance trends every month, so a clinic
+  owner isn't guessing where revenue is leaking
+
+Industry benchmarks for automated reminders suggest clinics can cut
+no-shows by up to 40% — that's the core promise Vitar is built around.
+
+WHO IT'S FOR
+Nigerian private clinics — from a solo GP with one or two doctors to
+multi-branch hospital groups. Right now, Vitar is focused specifically on
+individual clinic decision-makers in Nigeria, not a broad African market.
+
+HOW IT WORKS
+For patients: pick a doctor and time online -> get confirmed -> get
+reminded automatically -> show up.
+For clinic staff: set up the clinic profile once -> book and let Vitar
+handle reminders -> track attendance and risk in one dashboard.
+No new hardware. It runs in a browser on any phone, tablet, or laptop
+staff already use.
+
+PRICING (Naira-first, no hidden fees)
+- Free Trial: 30 days, full Pro features, no credit card required
+- Starter: NGN 6,000/month — for small clinics just getting started
+  (up to 2 doctors, 200 bookings/month, SMS & email reminders)
+- Pro (most popular): NGN 15,000/month — for growing clinics
+  (up to 10 doctors, 2,000 bookings/month, WhatsApp/SMS/email reminders,
+  no-show risk scoring, waiting list management, advanced analytics,
+  priority support)
+- Enterprise: custom pricing — for hospital groups and multi-branch
+  clinics (unlimited doctors and bookings, dedicated account manager,
+  custom integrations, SLA guarantee)
+
+WHY NOW / WHY TRUST VITAR
+- Built specifically for how Nigerian clinics operate: WhatsApp-first
+  reminders, pricing in Naira, no assumption of always-on broadband
+- Vitar is brand new and says so — instead of fake reviews, it's openly
+  recruiting its first 10 partner clinics, who get discounted lifetime
+  pricing in exchange for early feedback
+- Patient data is encrypted in transit and at rest, backed up
+  automatically, and accessible only to a clinic's own authorized staff
+- Built and operated by LiveVault, based in Enugu State, Nigeria
+
+CURRENT STAGE
+Pre-launch / early access. Actively onboarding the first clinics and
+gathering feedback before wider rollout. No customer logos or case
+studies yet by design — that space is reserved for real results as
+clinics come on board.
+
+CALL TO ACTION
+Try Vitar free for 30 days, no credit card required, at livevault.cloud.
+Clinics that join early become one of the first 10 partner clinics and
+lock in discounted lifetime pricing.
+
+CONTACT
+Website: https://livevault.cloud
+Built by: LiveVault (Enugu State, Nigeria)

@@ -10,26 +10,26 @@
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vitar by LiveVault — Smart Clinic & Appointment Management for Nigerian Clinics</title>
-  <meta name="description" content="Vitar by LiveVault helps Nigerian and African clinics manage appointments, reduce no-shows by 40%, and run smarter practices. 30-day free trial. No credit card required." />
-  <meta name="keywords" content="Vitar, VitarHealth, Vitar Health, VitarHealthcare, Vitar Healthcare, LiveVault, Vitar by LiveVault, clinic management Nigeria, appointment scheduling Nigeria, hospital software Nigeria, healthcare SaaS Africa, reduce no-shows, livevault.cloud" />
+  <title>Vitar — Smart Clinic & Appointment Management for Nigerian Clinics</title>
+  <meta name="description" content="Vitar helps Nigerian private clinics manage appointments, cut missed visits with automated reminders, and run smarter practices. 30-day free trial. No credit card required." />
+  <meta name="keywords" content="Vitar, VitarHealth, Vitar Health, VitarHealthcare, Vitar Healthcare, LiveVault, clinic management Nigeria, appointment scheduling Nigeria, hospital software Nigeria, healthcare SaaS Africa, reduce no-shows, livevault.cloud" />
   <meta name="author" content="LiveVault" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://livevault.cloud/" />
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Vitar — Clinic Management Software for Nigerian Clinics" />
-  <meta property="og:description" content="Reduce patient no-shows by 40% with AI-powered reminders. Manage appointments, patients, and billing — built for Nigerian healthcare." />
+  <meta property="og:description" content="Manage appointments, patients, and billing with automated WhatsApp, SMS, and email reminders — built for Nigerian healthcare." />
   <meta property="og:url" content="https://livevault.cloud/" />
   <meta property="og:image" content="https://livevault.cloud/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:site_name" content="Vitar by LiveVault" />
+  <meta property="og:site_name" content="Vitar" />
   <meta property="og:locale" content="en_NG" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Vitar — Smart Clinic Management | livevault.cloud" />
-  <meta name="twitter:description" content="Nigerian clinic management software. 30-day free trial. Reduce no-shows by 40%." />
+  <meta name="twitter:description" content="Nigerian clinic management software. 30-day free trial. Automated reminders that help cut missed appointments." />
   <meta name="twitter:image" content="https://livevault.cloud/twitter-card.png" />
 
   <meta name="geo.region" content="NG" />
@@ -109,6 +109,14 @@
       text-decoration: none; transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--ink); }
+    .nav-demo-link { display: inline-flex !important; align-items: center; gap: 6px; color: var(--teal-dark) !important; }
+    .nav-demo-link:hover { color: var(--teal-dark) !important; }
+    .live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 0 rgba(13,148,136,0.5); animation: livePulse 2s infinite; }
+    @keyframes livePulse {
+      0% { box-shadow: 0 0 0 0 rgba(13,148,136,0.45); }
+      70% { box-shadow: 0 0 0 6px rgba(13,148,136,0); }
+      100% { box-shadow: 0 0 0 0 rgba(13,148,136,0); }
+    }
     .nav-right { display: flex; align-items: center; gap: 18px; }
     .nav-login { font-size: 0.88rem; font-weight: 600; color: var(--ink); text-decoration: none; }
     .nav-login:hover { color: var(--teal); }
@@ -258,6 +266,18 @@
       transition: all 0.2s;
     }
     .btn-primary:hover { background: var(--teal-dark); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(13,148,136,0.35); }
+    .btn-demo { position: relative; }
+    .btn-demo::after {
+      content: ''; position: absolute; inset: 0; border-radius: 50px;
+      box-shadow: 0 0 0 0 rgba(13,148,136,0.45);
+      animation: btnPulse 2.4s infinite;
+      pointer-events: none;
+    }
+    @keyframes btnPulse {
+      0% { box-shadow: 0 0 0 0 rgba(13,148,136,0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(13,148,136,0); }
+      100% { box-shadow: 0 0 0 0 rgba(13,148,136,0); }
+    }
     .btn-secondary {
       display: inline-flex; align-items: center; gap: 8px;
       background: transparent; color: var(--ink);
@@ -269,77 +289,53 @@
     }
     .btn-secondary:hover { border-color: var(--teal); color: var(--teal); }
 
+    .hero-microlink { margin: -22px 0 34px; }
+    .hero-microlink a {
+      font-size: 0.85rem; font-weight: 600; color: var(--slate);
+      text-decoration: none; border-bottom: 1px solid rgba(100,116,139,0.35);
+      padding-bottom: 1px; transition: color 0.2s, border-color 0.2s;
+    }
+    .hero-microlink a:hover { color: var(--teal-dark); border-color: var(--teal); }
+    @media (max-width: 900px) { .hero-microlink { text-align: center; } }
     .hero-stats { display: flex; gap: 28px; flex-wrap: wrap; }
     .hstat-num { font-family: 'Sora', sans-serif; font-size: 1.5rem; font-weight: 800; color: var(--ink); }
     .hstat-label { font-size: 0.76rem; color: var(--slate); font-weight: 500; }
 
-    /* ── HERO VISUAL (signature: phone reminder mockup) ── */
-    .hero-visual { position: relative; display: flex; justify-content: center; align-items: center; min-height: 420px; }
+    /* ── HERO VISUAL (single dashboard preview anchor) ── */
+    .hero-visual { position: relative; display: flex; flex-direction: column; align-items: center; gap: 18px; min-height: 420px; justify-content: center; }
     .hv-glow {
       position: absolute; width: 420px; height: 420px; border-radius: 50%;
       background: radial-gradient(circle, rgba(13,148,136,0.16) 0%, transparent 70%);
       z-index: 0;
     }
-    .phone {
-      position: relative; z-index: 1;
-      width: 250px; background: var(--ink);
-      border-radius: 34px; padding: 10px;
-      box-shadow: 0 30px 60px -12px rgba(10,22,40,0.35), 0 0 0 1px rgba(10,22,40,0.06);
-      transform: rotate(-3deg);
+    .hero-dash {
+      position: relative; z-index: 1; width: 100%; max-width: 420px;
+      background: #fff; border-radius: 18px; overflow: hidden;
+      box-shadow: 0 30px 60px -12px rgba(10,22,40,0.25), 0 0 0 1px rgba(10,22,40,0.06);
     }
-    .phone-screen {
-      background: linear-gradient(180deg,#eafaf6 0%,#f7fefc 100%);
-      border-radius: 24px; overflow: hidden; padding: 16px 12px 20px;
-      min-height: 400px; display: flex; flex-direction: column;
+    .hero-dash-top {
+      display: flex; align-items: center; gap: 6px;
+      padding: 12px 16px; background: #f8fafc; border-bottom: 1px solid var(--line);
     }
-    .phone-top { display:flex; align-items:center; gap:8px; margin-bottom:14px; padding: 0 2px;}
-    .phone-top .avatar { width:28px; height:28px; border-radius:50%; background: var(--teal); display:flex; align-items:center; justify-content:center; color:#fff; font-size:0.7rem; font-weight:800; font-family:'Sora',sans-serif; }
-    .phone-top .who { font-size: 0.78rem; font-weight: 700; color: var(--ink); }
-    .phone-top .status { font-size: 0.63rem; color: var(--teal-dark); }
-    .bubble {
-      background: #fff; border-radius: 14px; padding: 12px 13px;
-      font-size: 0.72rem; line-height: 1.55; color: var(--ink-2);
-      box-shadow: 0 2px 10px rgba(10,22,40,0.06);
-      margin-bottom: 10px; max-width: 92%;
+    .hero-dash-top i { width: 9px; height: 9px; border-radius: 50%; background: #cbd5e1; display: block; }
+    .hero-dash-top span { margin-left: 8px; font-size: 0.7rem; color: var(--slate); font-weight: 600; }
+    .hero-dash-body { padding: 20px; }
+    .hd-title { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1rem; color: var(--ink); }
+    .hd-sub { font-size: 0.76rem; color: var(--slate); margin-bottom: 14px; }
+    .hero-dash-stats { position: relative; z-index: 1; display: flex; gap: 14px; }
+    .hero-dash-stat {
+      display: flex; flex-direction: column; align-items: center; gap: 2px;
+      background: #fff; border: 1px solid var(--line); border-radius: 12px;
+      padding: 10px 22px; box-shadow: 0 8px 20px rgba(10,22,40,0.08);
     }
-    .bubble b { color: var(--teal-dark); }
-    .bubble.me { align-self: flex-end; background: var(--teal); color: #fff; }
-    .bubble.me b { color: #fff; }
-    .risk-card {
-      margin-top: auto;
-      background: #fff; border: 1px solid var(--line); border-radius: 14px;
-      padding: 12px; box-shadow: 0 4px 16px rgba(10,22,40,0.06);
-    }
-    .risk-top { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
-    .risk-top span:first-child { font-size: 0.65rem; font-weight: 700; color: var(--slate); text-transform:uppercase; letter-spacing:0.04em; }
-    .risk-badge { font-size: 0.62rem; font-weight: 800; padding: 2px 8px; border-radius: 20px; background: #dcfce7; color: #15803d; }
-    .risk-bar { height:6px; border-radius:4px; background:#e2e8f0; overflow:hidden; }
-    .risk-bar i { display:block; height:100%; width:14%; background: linear-gradient(90deg,#22c55e,#0d9488); border-radius: 4px; }
-    .float-card {
-      position: absolute; z-index: 2;
-      background: #fff; border-radius: 14px; padding: 10px 14px;
-      box-shadow: 0 14px 30px rgba(10,22,40,0.14); border: 1px solid var(--line);
-      display: flex; align-items: center; gap: 8px;
-      font-size: 0.72rem; font-weight: 700; color: var(--ink);
-    }
-    .float-card.fc1 { top: 6%; left: -4%; }
-    .float-card.fc2 { bottom: 10%; right: -8%; }
-    .float-card.fc3 { top: 4%; right: -10%; max-width: 168px; line-height: 1.3; }
-    .float-card .ic { font-size: 0.95rem; }
+    .hero-dash-stat .hstat-num { font-size: 1.15rem; color: var(--teal-dark); }
+    .hero-dash-stat .hstat-label { font-size: 0.68rem; }
 
     @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; padding: 56px 6vw 48px; text-align:center; }
       .hero h1, .hero-sub { max-width: 100%; margin-left:auto; margin-right:auto; }
       .hero-actions, .hero-stats { justify-content: center; }
       .hero-visual { min-height: 340px; margin-top: 28px; }
-      .phone { width: 220px; }
-      .float-card.fc1 { left: 2%; }
-      .float-card.fc2 { right: 0%; }
-      .float-card.fc3 { right: 2%; top: 2%; max-width: 140px; font-size: 0.66rem; }
-    }
-
-    @media (max-width: 600px) {
-      .float-card.fc3 { display: none; }
     }
 
     /* ── STATS BAR ── */
@@ -373,6 +369,7 @@
       display: block;
     }
     .stat-label { font-size: 0.78rem; color: var(--slate); margin-top: 2px; font-weight: 500; }
+    .stats-bar-note { text-align: center; font-size: 0.7rem; color: var(--slate); opacity: 0.8; margin-top: 14px; padding: 0 6vw; }
 
     /* ── SECTION WRAPPER ── */
     .section { padding: 96px 5vw; }
@@ -452,6 +449,12 @@
       display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 32px; position: relative;
     }
+    .how-subhead {
+      text-align: center; font-family: 'Sora', sans-serif; font-weight: 700;
+      font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em;
+      color: var(--teal-dark); margin: 40px 0 -4px;
+    }
+    .steps:first-of-type ~ .how-subhead { margin-top: 56px; }
     .step { text-align: center; }
     .step-num {
       width: 48px; height: 48px; border-radius: 50%;
@@ -487,8 +490,11 @@
     }
     .plan.popular {
       border-color: var(--teal);
-      box-shadow: 0 8px 32px rgba(13,148,136,0.15);
+      box-shadow: 0 20px 48px -12px rgba(13,148,136,0.32);
+      transform: scale(1.03);
+      z-index: 1;
     }
+    .plan.popular:hover { transform: scale(1.03) translateY(-3px); }
     .popular-badge {
       position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
       background: var(--teal); color: #fff;
@@ -499,7 +505,8 @@
     .plan-name { font-size: 0.8rem; font-weight: 700; color: var(--slate); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
     .plan-price {
       font-family: 'Sora', sans-serif;
-      font-size: 2.2rem; font-weight: 800; color: var(--ink);
+      font-size: 2.4rem; font-weight: 800; color: var(--ink);
+      letter-spacing: -0.02em;
       margin-bottom: 4px;
     }
     .plan-price span { font-size: 1rem; color: var(--slate); font-weight: 500; }
@@ -526,19 +533,183 @@
     .plan-btn.ghost { border: 2px solid rgba(0,0,0,0.12); color: var(--slate); }
     .plan-btn.ghost:hover { border-color: var(--teal); color: var(--teal); }
 
+    /* ── SEE VITAR IN ACTION ── */
+    .action-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+    .action-tab {
+      border: 1.5px solid var(--line); background: var(--white); color: var(--slate);
+      font-size: 0.82rem; font-weight: 700; padding: 9px 16px; border-radius: 999px;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .action-tab:hover { border-color: var(--teal); color: var(--teal-dark); }
+    .action-tab.active { background: var(--ink); border-color: var(--ink); color: #fff; }
+    .action-frame {
+      border-radius: var(--r-lg); overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: 0 24px 60px -16px rgba(10,22,40,0.18);
+      background: #fff;
+    }
+    .action-frame-top {
+      display: flex; align-items: center; gap: 8px;
+      padding: 12px 16px; background: #f1f5f9; border-bottom: 1px solid var(--line);
+    }
+    .action-frame-top i { width: 10px; height: 10px; border-radius: 50%; background: #cbd5e1; display: block; }
+    .action-frame-top span { margin-left: 10px; font-size: 0.74rem; color: var(--slate); font-weight: 600; }
+    .action-panel { display: none; padding: 26px; min-height: 320px; }
+    .action-panel.active { display: block; }
+    .ap-title { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.1rem; margin-bottom: 4px; }
+    .ap-sub { color: var(--slate); font-size: 0.85rem; margin-bottom: 20px; }
+    .ap-metrics { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 12px; margin-bottom: 18px; }
+    .ap-metric { background: var(--mist); border: 1px solid var(--line); border-radius: 12px; padding: 14px; }
+    .ap-metric span { font-size: 0.68rem; color: var(--slate); font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+    .ap-metric strong { display: block; font-family: 'Sora', sans-serif; font-size: 1.3rem; margin-top: 4px; }
+    .ap-table { width: 100%; border-collapse: collapse; }
+    .ap-table th, .ap-table td { text-align: left; padding: 10px 8px; font-size: 0.82rem; border-bottom: 1px solid rgba(10,22,40,0.06); }
+    .ap-table th { color: var(--slate); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .ap-pill { display: inline-block; padding: 3px 9px; border-radius: 999px; font-size: 0.68rem; font-weight: 800; }
+    .ap-pill.low { background: #dcfce7; color: #15803d; }
+    .ap-pill.med { background: #fef3c7; color: #92400e; }
+    .ap-pill.high { background: #fee2e2; color: #dc2626; }
+    .ap-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; }
+    .ap-card { border: 1px solid var(--line); border-radius: 12px; padding: 14px; }
+    .ap-card strong { display: block; font-size: 0.88rem; margin-bottom: 4px; }
+    .ap-card span { font-size: 0.76rem; color: var(--slate); }
+    .ap-bars { display: grid; gap: 10px; }
+    .ap-bar-row { display: grid; grid-template-columns: 60px 1fr 36px; align-items: center; gap: 10px; font-size: 0.8rem; }
+    .ap-bar-track { height: 10px; background: #e2e8f0; border-radius: 999px; overflow: hidden; }
+    .ap-bar-track i { display: block; height: 100%; background: var(--teal); border-radius: 999px; }
+    .ap-booking { max-width: 380px; margin: 0 auto; }
+    .ap-field { margin-bottom: 12px; }
+    .ap-field label { display: block; font-size: 0.74rem; font-weight: 700; color: var(--ink-2); margin-bottom: 5px; }
+    .ap-field .fake-input { border: 1.5px solid rgba(10,22,40,0.12); border-radius: 10px; padding: 10px 12px; font-size: 0.85rem; color: var(--slate); background: #f8fafc; }
+    .ap-booking .btn-primary { width: 100%; justify-content: center; margin-top: 6px; box-shadow: none; }
+    @media (max-width: 700px) { .ap-metrics, .ap-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+
+    /* ── PRODUCT GALLERY ── */
+    .gallery-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 26px; max-width: 980px; margin: 0 auto; }
+    .gallery-card {
+      background: #fff; border-radius: 16px; overflow: hidden;
+      border: 1px solid var(--line); box-shadow: 0 10px 30px rgba(10,22,40,0.08);
+      display: flex; flex-direction: column;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .gallery-card:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(10,22,40,0.12); }
+    .gallery-card-top { display: flex; align-items: center; gap: 6px; padding: 12px 16px; background: #f8fafc; border-bottom: 1px solid var(--line); }
+    .gallery-card-top i { width: 9px; height: 9px; border-radius: 50%; background: #cbd5e1; display: block; }
+    .gallery-card-top span { margin-left: 8px; font-size: 0.78rem; color: var(--slate); font-weight: 600; }
+    .gallery-card-body { padding: 24px; flex: 1; min-height: 200px; }
+    .gallery-card-label { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
+    .gallery-card-label .icon { font-size: 1.5rem; line-height: 1; }
+    .gallery-card-label .name { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.3rem; color: var(--ink); }
+    .gallery-caption { font-size: 0.92rem; color: var(--slate); padding: 0 24px 22px; line-height: 1.5; }
+    @media (max-width: 700px) { .gallery-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 480px) { .ap-metrics, .ap-grid { grid-template-columns: 1fr; } }
+
+    .ap-cal { display: grid; gap: 6px; }
+    .ap-cal-head, .ap-cal-row { display: grid; grid-template-columns: 48px repeat(5, 1fr); gap: 6px; align-items: center; }
+    .ap-cal-head span { font-size: 0.68rem; font-weight: 800; color: var(--slate); text-transform: uppercase; letter-spacing: 0.04em; text-align: center; }
+    .ap-cal-time { font-size: 0.72rem; font-weight: 700; color: var(--slate); }
+    .ap-cal-row i {
+      display: block; min-height: 34px; border-radius: 8px; font-style: normal;
+      background: var(--mist); border: 1px dashed rgba(13,148,136,0.25);
+    }
+    .ap-cal-row i.busy {
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.66rem; font-weight: 700; border: none; color: #fff;
+    }
+    .ap-cal-row i.busy.low { background: #0d9488; }
+    .ap-cal-row i.busy.med { background: #f59e0b; }
+    @media (max-width: 700px) {
+      .ap-cal-head, .ap-cal-row { grid-template-columns: 34px repeat(5, 1fr); }
+      .ap-cal-row i.busy { font-size: 0.58rem; padding: 2px; text-align: center; }
+    }
+
+    /* ── FAQ ── */
+    .faq-list { max-width: 760px; }
+    .faq-item { border-bottom: 1px solid var(--line); }
+    .faq-q {
+      width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      background: none; border: none; text-align: left; cursor: pointer;
+      padding: 20px 0; font-family: 'Sora', sans-serif; font-size: 1rem; font-weight: 700; color: var(--ink);
+    }
+    .faq-q .plus { font-size: 1.3rem; color: var(--teal); transition: transform 0.2s; flex-shrink: 0; }
+    .faq-item.open .faq-q .plus { transform: rotate(45deg); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.25s ease; }
+    .faq-a p { color: var(--slate); font-size: 0.92rem; line-height: 1.7; padding-bottom: 20px; max-width: 620px; }
+    .faq-item.open .faq-a { max-height: 240px; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 20px; }
+    .testimonial-card {
+      background: var(--mist); border: 1px solid var(--line); border-radius: var(--r);
+      padding: 26px;
+    }
+    .testimonial-card .quote-mark { font-family: 'Sora', sans-serif; font-size: 2.2rem; color: var(--teal); line-height: 1; margin-bottom: 6px; display: block; }
+    .testimonial-card p.quote { color: var(--ink-2); font-size: 0.94rem; line-height: 1.7; margin-bottom: 18px; }
+    .testimonial-person { display: flex; align-items: center; gap: 10px; }
+    .testimonial-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--teal); color: #fff; display: flex; align-items: center; justify-content: center; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 0.85rem; }
+    .testimonial-person strong { display: block; font-size: 0.88rem; }
+    .testimonial-person span { font-size: 0.76rem; color: var(--slate); }
+    .testimonial-note { text-align: center; font-size: 0.78rem; color: var(--slate); margin-top: 22px; }
+
+    /* ── GROWTH PROOF ── */
+    .growth-logos {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 16px;
+      margin-bottom: 44px;
+    }
+    .logo-slot {
+      display: flex; align-items: center; justify-content: center;
+      width: 180px; height: 64px; border-radius: 12px;
+      border: 1.5px dashed rgba(10,22,40,0.16); background: var(--mist);
+      color: var(--slate); font-size: 0.78rem; font-weight: 700; text-align: center;
+    }
+    .growth-stats {
+      display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px;
+      max-width: 640px; margin: 0 auto 10px;
+    }
+    .growth-stat {
+      text-align: center; padding: 22px 14px; border-radius: 14px;
+      border: 1px solid var(--line); background: var(--white);
+    }
+    .growth-stat .num { display: block; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.6rem; color: var(--teal-dark); }
+    .growth-stat .label { display: block; font-size: 0.76rem; color: var(--slate); margin-top: 4px; }
+    .growth-note { text-align: center; font-size: 0.78rem; color: var(--slate); margin-bottom: 44px; }
+    .case-study-card {
+      max-width: 620px; margin: 0 auto; padding: 28px;
+      border-radius: var(--r-lg); background: var(--ink); color: #fff;
+    }
+    .case-study-tag {
+      display: inline-block; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.05em;
+      text-transform: uppercase; color: var(--teal-lt); background: rgba(13,148,136,0.25);
+      padding: 4px 10px; border-radius: 999px; margin-bottom: 12px;
+    }
+    .case-study-card h3 { font-family: 'Sora', sans-serif; font-size: 1.15rem; margin-bottom: 10px; }
+    .case-study-card p { font-size: 0.88rem; color: rgba(255,255,255,0.68); line-height: 1.6; }
+    @media (max-width: 600px) { .growth-stats { grid-template-columns: 1fr; } }
+
+    /* ── FINAL CTA ── */
+    .final-cta { background: linear-gradient(135deg, #0f172a 0%, #134e4a 100%); text-align: center; }
+    .final-cta .section-title { color: #fff; max-width: 100%; }
+    .final-cta .section-sub { color: rgba(255,255,255,0.62); max-width: 560px; margin: 0 auto 32px; }
+    .final-cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
     /* ── TRUST ── */
     .trust { background: var(--ink); text-align: center; }
     .trust .section-title { color: var(--white); max-width: 100%; }
-    .trust .section-sub { color: rgba(255,255,255,0.55); max-width: 500px; margin: 0 auto 48px; }
-    .trust-items {
-      display: flex; flex-wrap: wrap; justify-content: center; gap: 32px;
-      margin-bottom: 48px;
+    .trust .section-sub { color: rgba(255,255,255,0.55); max-width: 560px; margin: 0 auto 48px; }
+    .trust-grid {
+      display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 20px;
+      text-align: left;
     }
-    .trust-item {
-      display: flex; align-items: center; gap: 10px;
-      color: rgba(255,255,255,0.7); font-size: 0.9rem; font-weight: 500;
+    .trust-card {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px; padding: 22px;
     }
-    .trust-item span.icon { font-size: 1.2rem; }
+    .trust-card .icon { font-size: 1.3rem; display: block; margin-bottom: 10px; }
+    .trust-card h4 { color: #fff; font-size: 0.92rem; font-weight: 700; margin-bottom: 8px; }
+    .trust-card p { color: rgba(255,255,255,0.62); font-size: 0.82rem; line-height: 1.6; }
+    .trust-card p a { color: var(--teal-lt); text-decoration: underline; }
+    @media (max-width: 900px) { .trust-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+    @media (max-width: 560px) { .trust-grid { grid-template-columns: 1fr; } }
 
     /* ── EMAIL CAPTURE ── */
     .capture { background: linear-gradient(135deg, #0f172a 0%, #134e4a 100%); }
@@ -659,11 +830,11 @@
         "@type": "Organization",
         "@id": "https://livevault.cloud/#organization",
         "name": "Vitar",
-        "alternateName": ["LiveVault", "Vitar by LiveVault", "Vitar Health", "Vitar Healthcare", "VitarHealth", "VitarHealthcare"],
+        "alternateName": ["Vitar Health", "Vitar Healthcare", "VitarHealth", "VitarHealthcare"],
         "url": "https://livevault.cloud",
         "logo": "https://livevault.cloud/icon-512x512.png",
         "image": "https://livevault.cloud/og-image.png",
-        "description": "Vitar by LiveVault is a clinic management and appointment scheduling platform built for Nigerian and African healthcare providers.",
+        "description": "Vitar is a clinic management and appointment scheduling platform built by LiveVault for Nigerian private clinics.",
         "email": "vitarhealthcare@gmail.com",
         "telephone": "+2347016479713",
         "address": { "@type": "PostalAddress", "addressCountry": "NG" },
@@ -673,15 +844,15 @@
         "@type": "WebSite",
         "@id": "https://livevault.cloud/#website",
         "url": "https://livevault.cloud",
-        "name": "Vitar by LiveVault",
-        "alternateName": ["Vitar", "LiveVault", "VitarHealth", "VitarHealthcare"],
+        "name": "Vitar",
+        "alternateName": ["VitarHealth", "VitarHealthcare"],
         "publisher": { "@id": "https://livevault.cloud/#organization" },
         "inLanguage": "en-NG"
       },
       {
         "@type": "SoftwareApplication",
         "name": "Vitar",
-        "description": "Vitar is a clinic management and appointment scheduling platform for Nigerian and African healthcare providers.",
+        "description": "Vitar is a clinic management and appointment scheduling platform for Nigerian private clinics.",
         "url": "https://livevault.cloud",
         "applicationCategory": "HealthApplication",
         "operatingSystem": "Web",
@@ -692,10 +863,10 @@
       {
         "@type": "FAQPage",
         "mainEntity": [
-          { "@type": "Question", "name": "What is Vitar?", "acceptedAnswer": { "@type": "Answer", "text": "Vitar is a clinic management platform by LiveVault for Nigerian clinics. It handles appointments, patients, billing, and reduces no-shows by up to 40% using AI reminders." } },
+          { "@type": "Question", "name": "What is Vitar?", "acceptedAnswer": { "@type": "Answer", "text": "Vitar is a clinic management platform for Nigerian clinics. It handles appointments, patients, and billing, and helps reduce missed appointments using automated WhatsApp, SMS, and email reminders." } },
           { "@type": "Question", "name": "Is there a free trial?", "acceptedAnswer": { "@type": "Answer", "text": "Yes — 30 days full access, no credit card required." } },
-          { "@type": "Question", "name": "What does Vitar cost?", "acceptedAnswer": { "@type": "Answer", "text": "Plans start at ₦2,500/month. Enterprise pricing is custom. All plans include a 30-day free trial." } },
-          { "@type": "Question", "name": "Is Vitar the same as LiveVault?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Vitar is the clinic management product built by LiveVault, accessible at livevault.cloud." } }
+          { "@type": "Question", "name": "What does Vitar cost?", "acceptedAnswer": { "@type": "Answer", "text": "The Pro plan is ₦15,000/month after your 30-day free trial. There's no credit card required to start." } },
+          { "@type": "Question", "name": "Who builds Vitar?", "acceptedAnswer": { "@type": "Answer", "text": "Vitar is built and maintained by LiveVault, accessible at livevault.cloud." } }
         ]
       }
     ]
@@ -709,12 +880,12 @@
     <div class="nav-left">
       <a href="/" class="nav-logo">
         <img src="icon-192x192.png" alt="Vitar logo" />
-        <span>Vitar <em>by LiveVault</em></span>
+        <span>Vitar</span>
       </a>
       <div class="nav-links">
         <a href="#features">Features</a>
         <a href="#how-it-works">How it works</a>
-        <a href="demo.html">Demo</a>
+        <a href="demo.html" class="nav-demo-link"><span class="live-dot"></span>Try Live Demo</a>
         <a href="#pricing">Pricing</a>
         <a href="contact.html">Contact</a>
       </div>
@@ -733,12 +904,12 @@
     <div class="mobile-menu-top">
       <a href="/" class="nav-logo">
         <img src="icon-192x192.png" alt="Vitar logo" />
-        <span>Vitar <em>by LiveVault</em></span>
+        <span>Vitar</span>
       </a>
       <button class="mobile-menu-close" aria-label="Close menu" onclick="toggleMobileMenu()">✕</button>
     </div>
     <a href="#features" onclick="toggleMobileMenu()">Features</a>
-    <a href="demo.html" onclick="toggleMobileMenu()">Demo</a>
+    <a href="demo.html" onclick="toggleMobileMenu()" class="nav-demo-link"><span class="live-dot"></span>Try Live Demo</a>
     <a href="#pricing" onclick="toggleMobileMenu()">Pricing</a>
     <a href="contact.html">Contact</a>
     <a href="feedback.html">Feedback</a>
@@ -754,91 +925,158 @@
         Onboarding new clinics · 30-day free trial
       </div>
       <h1>
-        Your clinic deserves better than<br>
-        <span class="accent">missed appointments</span>
+        Stop Losing Patients to<br>
+        <span class="accent">Missed Appointments</span>
       </h1>
       <p class="hero-sub">
-        Vitar helps Nigerian clinics schedule smarter, remind patients automatically,
-        and cut no-shows by up to 40% — without changing how you work.
+        Vitar helps Nigerian clinics reduce no-shows, simplify bookings, and manage patients from one powerful dashboard.
       </p>
       <div class="hero-actions">
-        <a href="signup.html" class="btn-primary">
-          Start free for 30 days →
+        <a href="demo.html" class="btn-primary btn-demo">
+          Try Live Demo →
         </a>
-        <a href="demo.html" class="btn-secondary">
-          Use demo
-        </a>
-        <a href="#how-it-works" class="btn-secondary">
-          See how it works
+        <a href="signup.html" class="btn-secondary">
+          Start Free Trial
         </a>
       </div>
-      <div class="hero-stats">
-        <div><div class="hstat-num">40%</div><div class="hstat-label">Fewer no-shows</div></div>
-        <div><div class="hstat-num">₦2,500</div><div class="hstat-label">From /month</div></div>
-        <div><div class="hstat-num">5 min</div><div class="hstat-label">To get started</div></div>
-      </div>
+      <p class="hero-microlink">Explore the real dashboard, no signup needed · <a href="#how-it-works">see how it works ↓</a></p>
     </div>
 
     <div class="hero-visual">
       <div class="hv-glow"></div>
-      <div class="float-card fc1"><span class="ic">📉</span> No-shows down 40%</div>
-      <div class="float-card fc3"><span class="ic">🖥️</span> Auto-sent from your Vitar dashboard</div>
-      <div class="phone">
-        <div class="phone-screen">
-          <div class="phone-top">
-            <div class="avatar">DA</div>
-            <div>
-              <div class="who">Dr. Adeyemi Clinic</div>
-              <div class="status">via WhatsApp</div>
-            </div>
-          </div>
-          <div class="bubble">Hi Chiamaka 👋 this is a reminder that your appointment with <b>Dr. Adeyemi</b> is <b>tomorrow at 10:00 AM</b>.</div>
-          <div class="bubble">Reply <b>1</b> to confirm or <b>2</b> to reschedule.</div>
-          <div class="bubble me">1 — Confirmed ✅</div>
-          <div class="risk-card">
-            <div class="risk-top"><span>No-show risk</span><span class="risk-badge">Low · 12%</span></div>
-            <div class="risk-bar"><i></i></div>
-          </div>
+      <div class="hero-dash">
+        <div class="hero-dash-top"><i></i><i></i><i></i><span>app.livevault.cloud</span></div>
+        <div class="hero-dash-body">
+          <div class="hd-title">Clinic command centre</div>
+          <p class="hd-sub">Adeyemi Family Clinic · Today</p>
+          <table class="ap-table">
+            <thead><tr><th>Time</th><th>Patient</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>08:30 AM</td><td>Chiamaka Eze</td><td><span class="ap-pill low">Confirmed</span></td></tr>
+              <tr><td>09:15 AM</td><td>Musa Danjuma</td><td><span class="ap-pill med">Pending</span></td></tr>
+              <tr><td>10:00 AM</td><td>Amina Yusuf</td><td><span class="ap-pill low">Checked in</span></td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
-      <div class="float-card fc2"><span class="ic">🗓️</span> Booked in 5 min</div>
+      <div class="hero-dash-stats">
+        <div class="hero-dash-stat"><span class="hstat-num">Up to 40%</span><span class="hstat-label">Fewer no-shows*</span></div>
+        <div class="hero-dash-stat"><span class="hstat-num">5 min</span><span class="hstat-label">To get started</span></div>
+      </div>
     </div>
   </section>
 
   <div class="stats-bar-wrap">
     <div class="stats-bar">
-      <div class="stat"><span class="stat-num">40%</span><span class="stat-label">Fewer no-shows</span></div>
+      <div class="stat"><span class="stat-num">Up to 40%</span><span class="stat-label">Fewer no-shows*</span></div>
       <div class="stat"><span class="stat-num">30 days</span><span class="stat-label">Free trial · No card</span></div>
-      <div class="stat"><span class="stat-num">₦2,500</span><span class="stat-label">Starting price/month</span></div>
+      <div class="stat"><span class="stat-num">₦6,000</span><span class="stat-label">Starting price/month</span></div>
       <div class="stat"><span class="stat-num">5 min</span><span class="stat-label">To get started</span></div>
     </div>
+    <p class="stats-bar-note">*Based on industry benchmarks for automated appointment reminders, not a guaranteed result for every clinic.</p>
   </div>
+
+  <!-- PRODUCT GALLERY (all key screens visible at once) -->
+  <section class="section" id="product-gallery" style="background: var(--mist);">
+    <p class="section-label">See it before you try it</p>
+    <h2 class="section-title reveal">Every screen your clinic will use</h2>
+    <p class="section-sub reveal">A closer look at the actual interface — no imagination required. Tap "Try Live Demo" to click through it yourself.</p>
+    <div class="gallery-grid reveal">
+      <div class="gallery-card">
+        <div class="gallery-card-top"><i></i><i></i><i></i><span>app.livevault.cloud/bookings</span></div>
+        <div class="gallery-card-body">
+          <div class="gallery-card-label"><span class="icon">📋</span><span class="name">Bookings</span></div>
+          <div class="ap-metrics" style="grid-template-columns:repeat(2,1fr); gap:12px; margin-top:16px;">
+            <div class="ap-metric"><span>Bookings today</span><strong>18</strong></div>
+            <div class="ap-metric"><span>Checked in</span><strong>11</strong></div>
+            <div class="ap-metric"><span>Pending</span><strong>4</strong></div>
+            <div class="ap-metric"><span>No-show risk</span><strong>3</strong></div>
+          </div>
+        </div>
+        <p class="gallery-caption">Every booking, risk level, and reminder status in one view.</p>
+      </div>
+
+      <div class="gallery-card">
+        <div class="gallery-card-top"><i></i><i></i><i></i><span>app.livevault.cloud/calendar</span></div>
+        <div class="gallery-card-body">
+          <div class="gallery-card-label"><span class="icon">🗓️</span><span class="name">Appointments</span></div>
+          <div class="ap-cal" style="margin-top:16px;">
+            <div class="ap-cal-head"><span></span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span></div>
+            <div class="ap-cal-row"><span class="ap-cal-time">9AM</span><i class="busy low">Eze</i><i></i><i class="busy med">Musa</i><i></i><i class="busy low">Yusuf</i></div>
+            <div class="ap-cal-row"><span class="ap-cal-time">11AM</span><i></i><i class="busy low">Okoro</i><i></i><i class="busy low">Obi</i><i></i></div>
+            <div class="ap-cal-row"><span class="ap-cal-time">2PM</span><i class="busy med">Bello</i><i></i><i class="busy low">Ade</i><i></i><i class="busy low">Kalu</i></div>
+          </div>
+        </div>
+        <p class="gallery-caption">A week-at-a-glance view so nobody double-books a doctor.</p>
+      </div>
+
+      <div class="gallery-card">
+        <div class="gallery-card-top"><i></i><i></i><i></i><span>app.livevault.cloud/patients</span></div>
+        <div class="gallery-card-body">
+          <div class="gallery-card-label"><span class="icon">🧑‍⚕️</span><span class="name">Patients</span></div>
+          <div class="ap-grid" style="grid-template-columns:1fr; gap:10px; margin-top:16px;">
+            <div class="ap-card"><strong>Chiamaka Eze</strong><span>Hypertension · 8 visits</span></div>
+            <div class="ap-card"><strong>Musa Danjuma</strong><span>Diabetes review · 5 visits</span></div>
+            <div class="ap-card"><strong>Amina Yusuf</strong><span>Antenatal care · 3 visits</span></div>
+          </div>
+        </div>
+        <p class="gallery-caption">Search any patient's full visit history in seconds — no folders.</p>
+      </div>
+
+      <div class="gallery-card">
+        <div class="gallery-card-top"><i></i><i></i><i></i><span>app.livevault.cloud/analytics</span></div>
+        <div class="gallery-card-body">
+          <div class="gallery-card-label"><span class="icon">📊</span><span class="name">Analytics</span></div>
+          <div class="ap-bars" style="margin-top:18px; gap:12px;">
+            <div class="ap-bar-row"><strong>Apr</strong><div class="ap-bar-track"><i style="width:77%"></i></div><span>141</span></div>
+            <div class="ap-bar-row"><strong>May</strong><div class="ap-bar-track"><i style="width:90%"></i></div><span>166</span></div>
+            <div class="ap-bar-row"><strong>Jun</strong><div class="ap-bar-track"><i style="width:100%"></i></div><span>184</span></div>
+          </div>
+        </div>
+        <p class="gallery-caption">Track bookings and attendance trends month over month.</p>
+      </div>
+    </div>
+    <div class="reveal" style="text-align:center; margin-top:32px;">
+      <a href="demo.html" class="btn-primary btn-demo">Try Live Demo →</a>
+    </div>
+  </section>
+
 
   <!-- FEATURES -->
   <section class="section" id="features">
     <p class="section-label">What matters</p>
-    <h2 class="section-title reveal">The core tools your front desk needs</h2>
-    <p class="section-sub reveal">Vitar focuses on the work that affects clinic revenue every day: booking, reminders, patient flow, and no-show prevention.</p>
+    <h2 class="section-title reveal">Everything your front desk needs to run smoother</h2>
+    <p class="section-sub reveal">Every feature in Vitar is built to protect one thing: the revenue your clinic loses when a patient doesn't show up.</p>
     <div class="features-grid reveal">
       <div class="feature-card">
         <div class="feature-icon">📅</div>
-        <h3>Appointment scheduling</h3>
-        <p>Book patients quickly, avoid double-booking, and keep doctor schedules clear.</p>
+        <h3>Easier patient booking</h3>
+        <p>Patients get a slot in seconds and staff never double-book a doctor by accident.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🔔</div>
-        <h3>SMS, email, and WhatsApp reminders</h3>
-        <p>Automated reminders help patients confirm, reschedule, or show up on time.</p>
+        <h3>Fewer missed appointments</h3>
+        <p>Automatic WhatsApp, SMS, and email reminders bring patients back on time, on their own.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🧠</div>
-        <h3>No-show risk prediction</h3>
-        <p>Highlight high-risk appointments so staff know who to call first.</p>
+        <h3>Know who to call first</h3>
+        <p>Vitar highlights patients who may be more likely to miss their visit, so staff can follow up with them first.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🏥</div>
-        <h3>QR check-in and patient records</h3>
-        <p>Let patients check in faster and keep visit history searchable.</p>
+        <h3>Less paperwork, faster check-in</h3>
+        <p>A QR scan checks patients in and pulls up their history — no more digging through folders.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⏱️</div>
+        <h3>Hours back for your staff</h3>
+        <p>Reminders, records, and check-in run themselves, so reception can focus on patients, not admin.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📈</div>
+        <h3>A clinic that runs itself better</h3>
+        <p>One dashboard shows bookings, attendance, and risk at a glance — no guesswork at month-end.</p>
       </div>
     </div>
   </section>
@@ -848,6 +1086,27 @@
     <p class="section-label">How it works</p>
     <h2 class="section-title reveal">A simple flow for busy clinics</h2>
     <p class="section-sub reveal">No new hardware. No complex setup. Staff can use it from a phone, tablet, or laptop.</p>
+
+    <p class="how-subhead reveal">For your patients</p>
+    <div class="steps reveal">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>Patient books online</h4>
+        <p>No app download. A patient picks a doctor, a time, and a reason for the visit in under a minute.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>Clinic confirms appointment</h4>
+        <p>Your front desk sees the request instantly and confirms it — no back-and-forth phone calls.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>Patient receives reminders and attends</h4>
+        <p>WhatsApp, SMS, and email reminders go out automatically, so the patient shows up on time.</p>
+      </div>
+    </div>
+
+    <p class="how-subhead reveal">For your clinic staff</p>
     <div class="steps reveal">
       <div class="step">
         <div class="step-num">1</div>
@@ -867,37 +1126,300 @@
     </div>
   </section>
 
+  <!-- SEE VITAR IN ACTION -->
+  <section class="section" id="product">
+    <p class="section-label">See Vitar in action</p>
+    <h2 class="section-title reveal">The dashboard your front desk will actually use</h2>
+    <p class="section-sub reveal">A real look at how Vitar organizes bookings, patients, and reminders — the same screens your staff will open every morning.</p>
+    <div class="action-tabs reveal" role="tablist" aria-label="Product screens">
+      <button class="action-tab active" data-panel="ap-dashboard">Dashboard</button>
+      <button class="action-tab" data-panel="ap-calendar">Appointment Calendar</button>
+      <button class="action-tab" data-panel="ap-appointments">Appointments</button>
+      <button class="action-tab" data-panel="ap-patients">Patients</button>
+      <button class="action-tab" data-panel="ap-doctors">Doctor Schedule</button>
+      <button class="action-tab" data-panel="ap-booking">Booking Page</button>
+      <button class="action-tab" data-panel="ap-analytics">Analytics</button>
+    </div>
+    <div class="action-frame reveal">
+      <div class="action-frame-top">
+        <i></i><i></i><i></i>
+        <span>app.livevault.cloud</span>
+      </div>
+
+      <div class="action-panel active" id="ap-dashboard">
+        <div class="ap-title">Clinic command centre</div>
+        <p class="ap-sub">Today's bookings, risk levels, and reminders in one view.</p>
+        <div class="ap-metrics">
+          <div class="ap-metric"><span>Today's bookings</span><strong>18</strong></div>
+          <div class="ap-metric"><span>Checked in</span><strong>11</strong></div>
+          <div class="ap-metric"><span>High-risk visits</span><strong>3</strong></div>
+          <div class="ap-metric"><span>Avg. no-show risk</span><strong>21%</strong></div>
+        </div>
+        <table class="ap-table">
+          <thead><tr><th>Time</th><th>Patient</th><th>Doctor</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>08:30 AM</td><td>Chiamaka Eze</td><td>Dr. Adeyemi</td><td><span class="ap-pill low">Confirmed</span></td></tr>
+            <tr><td>09:15 AM</td><td>Musa Danjuma</td><td>Dr. Nwosu</td><td><span class="ap-pill med">Pending</span></td></tr>
+            <tr><td>10:00 AM</td><td>Amina Yusuf</td><td>Dr. Bello</td><td><span class="ap-pill low">Checked in</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="action-panel" id="ap-calendar">
+        <div class="ap-title">Appointment calendar</div>
+        <p class="ap-sub">A week-at-a-glance view so nobody double-books a doctor.</p>
+        <div class="ap-cal">
+          <div class="ap-cal-head"><span></span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span></div>
+          <div class="ap-cal-row"><span class="ap-cal-time">9AM</span><i class="busy low">Eze</i><i></i><i class="busy med">Danjuma</i><i></i><i class="busy low">Yusuf</i></div>
+          <div class="ap-cal-row"><span class="ap-cal-time">11AM</span><i></i><i class="busy low">Okoro</i><i></i><i class="busy low">Obi</i><i class="busy med">Williams</i></div>
+          <div class="ap-cal-row"><span class="ap-cal-time">1PM</span><i class="busy low">Bello</i><i></i><i class="busy low">Musa</i><i></i><i></i></div>
+          <div class="ap-cal-row"><span class="ap-cal-time">3PM</span><i></i><i class="busy med">Chukwu</i><i></i><i class="busy low">Nnamdi</i><i class="busy low">Aisha</i></div>
+        </div>
+      </div>
+
+      <div class="action-panel" id="ap-appointments">
+        <div class="ap-title">Appointment scheduling</div>
+        <p class="ap-sub">Book a slot, assign a doctor, and reminders go out automatically.</p>
+        <table class="ap-table">
+          <thead><tr><th>Time</th><th>Patient</th><th>Reason</th><th>Reminder</th></tr></thead>
+          <tbody>
+            <tr><td>11:30 AM</td><td>Nneka Okoro</td><td>Follow-up consultation</td><td><span class="ap-pill low">Sent</span></td></tr>
+            <tr><td>01:00 PM</td><td>Emeka Obi</td><td>Lab result review</td><td><span class="ap-pill med">Scheduled</span></td></tr>
+            <tr><td>03:30 PM</td><td>Sade Williams</td><td>General check-up</td><td><span class="ap-pill low">Sent</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="action-panel" id="ap-patients">
+        <div class="ap-title">Patient records</div>
+        <p class="ap-sub">Search any patient's visit history in seconds — no folders.</p>
+        <div class="ap-grid">
+          <div class="ap-card"><strong>Chiamaka Eze</strong><span>Hypertension · 8 visits</span></div>
+          <div class="ap-card"><strong>Musa Danjuma</strong><span>Diabetes review · 5 visits</span></div>
+          <div class="ap-card"><strong>Amina Yusuf</strong><span>Antenatal care · 4 visits</span></div>
+          <div class="ap-card"><strong>Emeka Obi</strong><span>Lab review · 2 visits</span></div>
+          <div class="ap-card"><strong>Sade Williams</strong><span>Malaria follow-up · 3 visits</span></div>
+          <div class="ap-card"><strong>Nneka Okoro</strong><span>New patient · 0 visits</span></div>
+        </div>
+      </div>
+
+      <div class="action-panel" id="ap-doctors">
+        <div class="ap-title">Doctor schedule</div>
+        <p class="ap-sub">See every doctor's availability and daily load at a glance.</p>
+        <div class="ap-grid">
+          <div class="ap-card"><strong>Dr. Tunde Adeyemi</strong><span>General practice · 7 patients today</span></div>
+          <div class="ap-card"><strong>Dr. Ifeoma Nwosu</strong><span>Pediatrics · 5 patients today</span></div>
+          <div class="ap-card"><strong>Dr. Kunle Bello</strong><span>Internal medicine · 6 patients today</span></div>
+          <div class="ap-card"><strong>Dr. Grace Okafor</strong><span>Obstetrics · 4 patients today</span></div>
+          <div class="ap-card"><strong>Dr. Ahmed Musa</strong><span>Family medicine · 8 patients today</span></div>
+          <div class="ap-card"><strong>Dr. Bisi Fashola</strong><span>Off today · Back tomorrow, 9 AM</span></div>
+        </div>
+      </div>
+
+      <div class="action-panel" id="ap-booking">
+        <div class="ap-title" style="text-align:center;">Patient booking page</div>
+        <p class="ap-sub" style="text-align:center;">What patients see when they book — no app download needed.</p>
+        <div class="ap-booking">
+          <div class="ap-field"><label>Choose a doctor</label><div class="fake-input">Dr. Tunde Adeyemi</div></div>
+          <div class="ap-field"><label>Preferred time</label><div class="fake-input">Tomorrow, 11:30 AM</div></div>
+          <div class="ap-field"><label>Reason for visit</label><div class="fake-input">Follow-up consultation</div></div>
+          <div class="btn-primary">Confirm booking →</div>
+        </div>
+      </div>
+
+      <div class="action-panel" id="ap-analytics">
+        <div class="ap-title">Monthly analytics</div>
+        <p class="ap-sub">Track attendance trends and see what your no-show rate is really costing you.</p>
+        <div class="ap-bars">
+          <div class="ap-bar-row"><strong>Jan</strong><div class="ap-bar-track"><i style="width:64%"></i></div><span>118</span></div>
+          <div class="ap-bar-row"><strong>Feb</strong><div class="ap-bar-track"><i style="width:72%"></i></div><span>132</span></div>
+          <div class="ap-bar-row"><strong>Mar</strong><div class="ap-bar-track"><i style="width:81%"></i></div><span>149</span></div>
+          <div class="ap-bar-row"><strong>Apr</strong><div class="ap-bar-track"><i style="width:77%"></i></div><span>141</span></div>
+          <div class="ap-bar-row"><strong>May</strong><div class="ap-bar-track"><i style="width:90%"></i></div><span>166</span></div>
+          <div class="ap-bar-row"><strong>Jun</strong><div class="ap-bar-track"><i style="width:100%"></i></div><span>184</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal" style="text-align:center; margin-top:28px;">
+      <a href="demo.html" class="btn-primary">Launch Live Demo →</a>
+    </div>
+  </section>
+
   <!-- PRICING -->
   <section class="section" id="pricing" style="background: var(--mist);">
     <p class="section-label" style="text-align:center;">Pricing</p>
-    <h2 class="section-title reveal" style="text-align:center; max-width:100%;">Start small, upgrade when it works</h2>
-    <p class="section-sub reveal" style="text-align:center; max-width:100%; margin-bottom:36px;">Try Vitar first. No credit card required.</p>
-    <div class="pricing-grid reveal" style="max-width:780px;">
+    <h2 class="section-title reveal" style="text-align:center; max-width:100%;">Simple pricing for every clinic size</h2>
+    <p class="section-sub reveal" style="text-align:center; max-width:100%; margin-bottom:36px;">Start free for 30 days. No credit card. Upgrade only when you see the value.</p>
+    <div class="pricing-grid reveal" style="max-width:1180px;">
       <div class="plan free">
         <div class="plan-name">Free Trial</div>
         <div class="plan-price">₦0 <span>/30 days</span></div>
-        <div class="plan-desc">Best for evaluating Vitar with your team</div>
+        <div class="plan-desc">Try every Pro feature, risk-free</div>
         <ul class="plan-features">
-          <li>Appointment scheduling</li>
-          <li>Patient records</li>
-          <li>SMS and email reminders</li>
+          <li>Full access to Pro features</li>
+          <li>Up to 2 doctors</li>
+          <li>100 bookings included</li>
+          <li>SMS &amp; email reminders</li>
           <li>No credit card required</li>
+          <li>Cancel anytime</li>
         </ul>
         <a href="signup.html" class="plan-btn outline">Start Free Trial</a>
       </div>
-      <div class="plan popular">
-        <div class="popular-badge">FOR GROWING CLINICS</div>
-        <div class="plan-name">Pro</div>
-        <div class="plan-price">₦7,500 <span>/month</span></div>
-        <div class="plan-desc">For clinics that want automation and analytics</div>
+      <div class="plan">
+        <div class="plan-name">Starter</div>
+        <div class="plan-price">₦6,000 <span>/month</span></div>
+        <div class="plan-desc">For small clinics just getting started</div>
         <ul class="plan-features">
-          <li>WhatsApp, SMS, and email reminders</li>
-          <li>No-show risk prediction</li>
+          <li>Up to 2 doctors</li>
+          <li>200 bookings/month</li>
+          <li>SMS &amp; email reminders</li>
+          <li>Public booking page</li>
           <li>QR code check-in</li>
-          <li>Analytics dashboard</li>
+          <li>Email support</li>
         </ul>
-        <a href="demo.html" class="plan-btn filled">Use Demo</a>
+        <a href="signup.html" class="plan-btn ghost">Subscribe Now</a>
       </div>
+      <div class="plan popular">
+        <div class="popular-badge">MOST POPULAR</div>
+        <div class="plan-name">Pro</div>
+        <div class="plan-price">₦15,000 <span>/month</span></div>
+        <div class="plan-desc">For growing clinics that want full AI power</div>
+        <ul class="plan-features">
+          <li>Up to 10 doctors</li>
+          <li>2,000 bookings/month</li>
+          <li>SMS, WhatsApp &amp; email reminders</li>
+          <li>No-show risk scoring</li>
+          <li>Waiting list management</li>
+          <li>Advanced analytics</li>
+          <li>Priority support</li>
+        </ul>
+        <a href="signup.html" class="plan-btn filled">Subscribe Now</a>
+      </div>
+      <div class="plan">
+        <div class="plan-name">Enterprise</div>
+        <div class="plan-price" style="font-size:1.9rem;">Custom</div>
+        <div class="plan-desc">For hospital groups and multi-branch clinics</div>
+        <ul class="plan-features">
+          <li>Unlimited doctors</li>
+          <li>Unlimited bookings</li>
+          <li>All Pro features</li>
+          <li>Dedicated account manager</li>
+          <li>Custom integrations</li>
+          <li>SLA guarantee</li>
+        </ul>
+        <a href="contact.html" class="plan-btn ghost">Contact Sales</a>
+      </div>
+    </div>
+    <p class="testimonial-note" style="margin-top:24px;">Early days, honest pricing — as Vitar grows with real clinic feedback, these plans will evolve too.</p>
+  </section>
+
+  <!-- TRUST -->
+  <section class="section trust" id="trust">
+    <p class="section-label" style="text-align:center;">Built to be trusted</p>
+    <h2 class="section-title reveal" style="margin:0 auto 16px;">How Vitar protects your patients' data</h2>
+    <p class="section-sub reveal" style="margin-left:auto; margin-right:auto;">Clinics run on trust. Here's exactly what that means in practice, not just a badge.</p>
+    <p class="section-sub reveal" style="margin-left:auto; margin-right:auto; margin-top:-8px; font-weight:600; color: var(--ink-2);">Your clinic's patient information is encrypted and stored securely to help protect sensitive medical records.</p>
+    <div class="trust-grid reveal">
+      <div class="trust-card">
+        <span class="icon">🔒</span>
+        <h4>Encrypted patient records</h4>
+        <p>Patient data is encrypted in transit and at rest, and only your clinic's authorized staff can access it.</p>
+      </div>
+      <div class="trust-card">
+        <span class="icon">☁️</span>
+        <h4>Hosted securely in the cloud</h4>
+        <p>Vitar runs on cloud infrastructure, so your records are available from any device without a local server.</p>
+      </div>
+      <div class="trust-card">
+        <span class="icon">🛡️</span>
+        <h4>Automatic backups</h4>
+        <p>Your clinic's data is backed up automatically, so a lost device or a bad day never means lost records.</p>
+      </div>
+      <div class="trust-card">
+        <span class="icon">💬</span>
+        <h4>Real support, real people</h4>
+        <p>Reach us directly on WhatsApp or email. We're a small team onboarding early clinics, so we aim to reply within one business day.</p>
+      </div>
+      <div class="trust-card">
+        <span class="icon">🇳🇬</span>
+        <h4>Built for Nigerian clinics</h4>
+        <p>Pricing in Naira, WhatsApp-first reminders, and a product built around how Nigerian clinics actually run.</p>
+      </div>
+      <div class="trust-card">
+        <span class="icon">🏢</span>
+        <h4>Who's behind Vitar</h4>
+        <p>Built by LiveVault, a Nigerian software company focused on healthcare technology — based in Enugu State. <a href="contact.html">Reach out anytime</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <p class="section-label">FAQ</p>
+    <h2 class="section-title reveal">Questions clinics ask us</h2>
+    <p class="section-sub reveal">Can't find what you're looking for? <a href="contact.html" style="color:var(--teal-dark); font-weight:600;">Contact us directly</a>.</p>
+    <div class="faq-list reveal">
+      <div class="faq-item open">
+        <button class="faq-q">What is Vitar?<span class="plus">+</span></button>
+        <div class="faq-a"><p>Vitar is a clinic management platform built by LiveVault for Nigerian clinics. It handles appointments, patients, and reminders, and is designed to help reduce missed appointments — up to 40% based on industry benchmarks for automated reminders.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Is there a free trial?<span class="plus">+</span></button>
+        <div class="faq-a"><p>Yes — 30 days full access, no credit card required.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What does Vitar cost?<span class="plus">+</span></button>
+        <div class="faq-a"><p>The Pro plan is ₦15,000/month after your free trial. There's no setup fee and no long-term contract.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Do I need new hardware or an app?<span class="plus">+</span></button>
+        <div class="faq-a"><p>No. Vitar runs in the browser on any phone, tablet, or laptop your staff already use.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Is my clinic's data safe?<span class="plus">+</span></button>
+        <div class="faq-a"><p>Patient data is encrypted and backed up automatically. Only your clinic's staff can access your records.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EARLY PARTNER CALLOUT (honest, no invented quotes — swap for real testimonials once clinics are live) -->
+  <section class="section" id="testimonials" style="background: var(--mist);">
+    <div class="reveal" style="max-width:640px; margin:0 auto; text-align:center;">
+      <p class="section-label" style="text-align:center;">Early days</p>
+      <h2 class="section-title" style="text-align:center; max-width:100%;">Become one of our first 10 partner clinics</h2>
+      <p class="section-sub" style="text-align:center; max-width:100%; margin-bottom:8px;">Vitar is brand new — we'd rather earn your trust with real results than borrowed quotes. Try it free for 30 days and help shape what we build next.</p>
+      <p style="font-weight:700; color: var(--teal-dark); font-size:0.92rem; margin-top:14px;">The first 10 partner clinics receive discounted lifetime pricing.</p>
+      <div class="hero-actions" style="justify-content:center; margin-top:20px;">
+        <a href="signup.html" class="btn-primary">Start Free Trial →</a>
+        <a href="feedback.html" class="btn-secondary">Share Feedback</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GROWTH PROOF (placeholder — populate with real logos, stats, and case studies as Vitar onboards clinics) -->
+  <section class="section growth" id="growth">
+    <p class="section-label" style="text-align:center;">Built to grow with you</p>
+    <h2 class="section-title reveal" style="margin:0 auto 16px; text-align:center;">Reserved for what's coming next</h2>
+    <p class="section-sub reveal" style="text-align:center; margin:0 auto 40px;">We're onboarding our first clinics now. This is where customer logos, usage numbers, and case studies will live as they come in.</p>
+
+    <div class="growth-logos reveal">
+      <div class="logo-slot">Your clinic's logo</div>
+      <div class="logo-slot">Your clinic's logo</div>
+      <div class="logo-slot">Your clinic's logo</div>
+      <div class="logo-slot">Your clinic's logo</div>
+    </div>
+
+    <div class="growth-stats reveal">
+      <div class="growth-stat"><span class="num">—</span><span class="label">Appointments managed</span></div>
+      <div class="growth-stat"><span class="num">—</span><span class="label">Clinics onboarded</span></div>
+      <div class="growth-stat"><span class="num">—</span><span class="label">Reminders sent</span></div>
+    </div>
+    <p class="growth-note">Live numbers go here once real clinics are running on Vitar.</p>
+
+    <div class="case-study-card reveal">
+      <span class="case-study-tag">Case study · coming soon</span>
+      <h3>How [Clinic Name] cut no-shows by [X]% with Vitar</h3>
+      <p>The problem they had, what changed after switching to Vitar, and the results — written up once our first clinics have real numbers to share.</p>
     </div>
   </section>
 
@@ -917,15 +1439,26 @@
     </div>
   </section>
 
+  <!-- FINAL CTA -->
+  <section class="section final-cta">
+    <h2 class="section-title reveal">Ready to Modernize Your Clinic?</h2>
+    <p class="section-sub reveal">Join Nigerian clinics using Vitar to reduce missed appointments and improve patient care.</p>
+    <div class="final-cta-actions reveal">
+      <a href="signup.html" class="btn-primary">Start Free Trial →</a>
+      <a href="demo.html" class="btn-secondary" style="border-color: rgba(255,255,255,0.3); color:#fff;">Try Live Demo →</a>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer>
     <div class="footer-top">
       <div>
         <div class="footer-brand">
           <img src="icon-96x96.png" alt="Vitar logo" />
-          <span>Vitar <em>by LiveVault</em></span>
+          <span>Vitar</span>
         </div>
-        <p class="footer-tag">Clinic management and appointment scheduling built for Nigerian and African healthcare providers.</p>
+        <p class="footer-tag">Clinic management and appointment scheduling built for Nigerian private clinics.</p>
+        <p class="footer-tag" style="margin-top:6px; color:rgba(255,255,255,0.32);">Built by LiveVault</p>
       </div>
       <nav>
         <div class="col">
@@ -933,6 +1466,7 @@
           <a href="#features">Features</a>
           <a href="demo.html">Interactive demo</a>
           <a href="#pricing">Pricing</a>
+          <a href="#faq">FAQ</a>
           <a href="#how-it-works">How it works</a>
         </div>
         <div class="col">
@@ -946,6 +1480,11 @@
           <a href="feedback.html">Give feedback</a>
           <a href="mailto:vitarhealthcare@gmail.com">vitarhealthcare@gmail.com</a>
           <a href="https://wa.me/2347016479713" target="_blank" rel="noopener">WhatsApp: +234 701 647 9713</a>
+        </div>
+        <div class="col">
+          <span class="col-title">Legal</span>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
         </div>
       </nav>
     </div>
@@ -963,6 +1502,26 @@
       document.getElementById('menu-overlay').classList.toggle('open');
       document.body.style.overflow = document.getElementById('mobile-menu').classList.contains('open') ? 'hidden' : '';
     }
+
+    // "See Vitar in Action" tab switching
+    document.querySelectorAll('.action-tab').forEach((tab) => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.action-tab').forEach((t) => t.classList.remove('active'));
+        document.querySelectorAll('.action-panel').forEach((p) => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.panel).classList.add('active');
+      });
+    });
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-q').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const wasOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach((i) => i.classList.remove('open'));
+        if (!wasOpen) item.classList.add('open');
+      });
+    });
 
     // Scroll reveal
     const reveals = document.querySelectorAll('.reveal');

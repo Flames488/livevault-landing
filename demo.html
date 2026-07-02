@@ -8,7 +8,7 @@
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Interactive Product Demo — Vitar by LiveVault</title>
+  <title>Interactive Product Demo — Vitar</title>
   <meta name="description" content="Click through a mock Vitar clinic dashboard: appointment scheduling, patient records, no-show predictions, analytics, and QR check-in." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://livevault.cloud/demo.html" />
@@ -65,6 +65,7 @@
       background: rgba(255,255,255,0.9);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--line);
+      gap: 12px; flex-wrap: wrap;
     }
     .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
     .nav-logo img { width: 30px; height: 30px; }
@@ -170,7 +171,8 @@
     .card-head h3 { font-size: 1rem; }
     .card-body { padding: 20px; }
     .section { display: none; }
-    .section.active { display: block; }
+    .section.active { display: block; animation: fadeUp 0.3s ease; }
+    @media (prefers-reduced-motion: reduce) { .section.active { animation: none; } }
 
     .table { width: 100%; border-collapse: collapse; }
     .table th, .table td { padding: 13px 10px; border-bottom: 1px solid rgba(10,22,40,0.06); text-align: left; font-size: 0.86rem; vertical-align: middle; }
@@ -298,21 +300,87 @@
       .table { min-width: 680px; }
       .table-wrap { overflow-x: auto; }
     }
+    /* ── MODE SWITCH ── */
+    .mode-switch {
+      display: inline-flex; gap: 4px; background: rgba(10,22,40,0.06);
+      border-radius: 999px; padding: 4px;
+    }
+    .mode-btn {
+      border: none; background: transparent; color: var(--slate);
+      font-size: 0.82rem; font-weight: 700; padding: 8px 16px; border-radius: 999px;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .mode-btn.active { background: #fff; color: var(--ink); box-shadow: 0 2px 8px rgba(10,22,40,0.1); }
+    @media (max-width: 640px) { .mode-switch { order: 3; width: 100%; justify-content: center; } }
+
+    /* Note: section switching uses display:none/block (see base .section rule below)
+       rather than an opacity crossfade, since fading from display:none doesn't animate. */
+
+    /* ── PAGE LOAD SKELETON ── */
+    .page-loading {
+      position: fixed; inset: 0; z-index: 999;
+      background: var(--mist);
+      display: flex; align-items: center; justify-content: center;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+    }
+    .page-loading.done { opacity: 0; visibility: hidden; pointer-events: none; }
+    .loader-ring {
+      width: 40px; height: 40px; border-radius: 50%;
+      border: 3px solid rgba(13,148,136,0.18); border-top-color: var(--teal);
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── PATIENT VIEW ── */
+    .patient-view { display: none; max-width: 480px; margin: 36px auto 60px; padding: 0 6vw; }
+    .patient-view.active { display: block; }
+    .pv-card {
+      background: #fff; border: 1px solid var(--line); border-radius: 20px;
+      box-shadow: 0 20px 50px -14px rgba(10,22,40,0.18); padding: 26px;
+      animation: fadeUp 0.4s ease;
+    }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+    .pv-eyebrow { font-size: 0.7rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal-dark); margin-bottom: 8px; }
+    .pv-card h2 { font-family: 'Sora', sans-serif; font-size: 1.3rem; margin-bottom: 4px; }
+    .pv-card .pv-sub { color: var(--slate); font-size: 0.85rem; margin-bottom: 20px; }
+    .pv-appt {
+      background: var(--mist); border: 1px solid var(--line); border-radius: 14px;
+      padding: 16px; margin-bottom: 18px;
+    }
+    .pv-appt strong { display: block; font-size: 1rem; margin-bottom: 4px; }
+    .pv-appt span { color: var(--slate); font-size: 0.84rem; }
+    .pv-status { display: inline-block; margin-top: 10px; }
+    .pv-timeline { display: grid; gap: 10px; margin-bottom: 20px; }
+    .pv-msg {
+      background: #fff; border: 1px solid var(--line); border-radius: 14px;
+      padding: 12px 14px; font-size: 0.85rem; color: var(--ink-2); line-height: 1.55;
+      box-shadow: 0 2px 10px rgba(10,22,40,0.05);
+    }
+    .pv-msg b { color: var(--teal-dark); }
+    .pv-actions { display: flex; gap: 10px; }
+    .pv-actions .btn { flex: 1; justify-content: center; }
+    .pv-note { text-align: center; font-size: 0.78rem; color: var(--slate); margin-top: 16px; }
   </style>
 </head>
 <body>
+  <div class="page-loading" id="page-loading"><div class="loader-ring"></div></div>
+
   <nav>
     <a href="index.html" class="nav-logo">
       <img src="icon-192x192.png" alt="Vitar logo" />
-      <span>Vitar <em>by LiveVault</em></span>
+      <span>Vitar</span>
     </a>
+    <div class="mode-switch" role="tablist" aria-label="Demo perspective">
+      <button class="mode-btn active" id="mode-staff" type="button">🏥 Hospital / Doctor</button>
+      <button class="mode-btn" id="mode-patient" type="button">🧑 Patient</button>
+    </div>
     <div class="nav-actions">
       <a class="nav-link" href="index.html">Home</a>
       <a class="nav-link" href="feedback.html">Give feedback</a>
     </div>
   </nav>
 
-  <div class="demo-shell">
+  <div class="demo-shell" id="staff-view">
     <aside class="sidebar">
       <div class="clinic-badge">
         <div class="demo-label">Live mock demo</div>
@@ -495,6 +563,25 @@
         </div>
       </section>
     </main>
+  </div>
+
+  <div class="patient-view" id="patient-view">
+    <div class="pv-card">
+      <p class="pv-eyebrow">Patient view</p>
+      <h2>Your upcoming visit</h2>
+      <p class="pv-sub">This is what a patient sees after booking with your clinic — no app to download.</p>
+      <div class="pv-appt" id="pv-appt">
+        <!-- filled by JS -->
+      </div>
+      <div class="pv-timeline" id="pv-timeline">
+        <!-- filled by JS -->
+      </div>
+      <div class="pv-actions">
+        <button class="btn primary" type="button" id="pv-confirm">Confirm visit</button>
+        <button class="btn" type="button" id="pv-reschedule">Reschedule</button>
+      </div>
+      <p class="pv-note">Patients confirm or reschedule with one tap from WhatsApp — no phone calls to the front desk.</p>
+    </div>
   </div>
 
   <div class="toast" id="toast"></div>
@@ -771,6 +858,56 @@
     });
 
     renderAll();
+
+    // ── Page load skeleton ──
+    window.addEventListener('load', () => {
+      setTimeout(() => document.getElementById('page-loading').classList.add('done'), 280);
+    });
+
+    // ── Hospital/Doctor vs Patient mode ──
+    const staffView = document.getElementById('staff-view');
+    const patientView = document.getElementById('patient-view');
+    const modeStaffBtn = document.getElementById('mode-staff');
+    const modePatientBtn = document.getElementById('mode-patient');
+
+    function renderPatientView() {
+      const appt = state.appointments.find((a) => a.status !== 'checked-in') || state.appointments[0];
+      if (!appt) return;
+      document.getElementById('pv-appt').innerHTML = `
+        <strong>${appt.patient}'s appointment</strong>
+        <span>${appt.reason} with ${appt.doctor} · ${appt.time}</span><br>
+        <span class="status ${appt.status} pv-status">${appt.status}</span>
+      `;
+      document.getElementById('pv-timeline').innerHTML = `
+        <div class="pv-msg">Hi ${appt.patient.split(' ')[0]} 👋 this is a reminder that your appointment with <b>${appt.doctor}</b> is <b>${appt.time}</b>.</div>
+        <div class="pv-msg">Reply <b>1</b> to confirm or <b>2</b> to reschedule.</div>
+      `;
+    }
+
+    function setMode(mode) {
+      const isPatient = mode === 'patient';
+      staffView.style.display = isPatient ? 'none' : 'grid';
+      patientView.classList.toggle('active', isPatient);
+      modeStaffBtn.classList.toggle('active', !isPatient);
+      modePatientBtn.classList.toggle('active', isPatient);
+      if (isPatient) renderPatientView();
+    }
+
+    modeStaffBtn.addEventListener('click', () => setMode('staff'));
+    modePatientBtn.addEventListener('click', () => setMode('patient'));
+
+    document.getElementById('pv-confirm').addEventListener('click', () => {
+      const appt = state.appointments.find((a) => a.status !== 'checked-in') || state.appointments[0];
+      if (appt) { appt.status = 'confirmed'; appt.riskReason = 'Confirmed by patient'; appt.risk = Math.max(5, Math.round(appt.risk / 2)); }
+      saveState();
+      renderAll();
+      renderPatientView();
+      showToast('Visit confirmed — thanks!');
+    });
+
+    document.getElementById('pv-reschedule').addEventListener('click', () => {
+      showToast('Reschedule request sent to the front desk.');
+    });
   </script>
 </body>
 </html>
