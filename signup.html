@@ -253,10 +253,12 @@
     <div class="flinks">
       <a href="index.html">Home</a>
       <a href="contact.html">Contact</a>
-      <a href="mailto:hello@livevault.cloud">hello@livevault.cloud</a>
+      <a href="feedback.html">Give feedback</a>
+      <a href="mailto:vitarhealthcare@gmail.com">vitarhealthcare@gmail.com</a>
     </div>
   </footer>
 
+  <script src="forms-config.js"></script>
   <script>
     function setMode(mode) {
       const isSignup = mode === 'signup';
@@ -281,6 +283,7 @@
       const email = input.value.trim();
       if (!email || !email.includes('@')) { input.style.borderColor = '#ef4444'; return; }
       input.style.borderColor = '';
+      submitWaitlist({ email: email, source: 'signup_page' });
       document.querySelector('.waitlist-mini').style.display = 'none';
       document.querySelector('.mini-note').style.display = 'none';
       document.getElementById('mini-success').style.display = 'block';

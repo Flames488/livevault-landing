@@ -274,13 +274,18 @@
       .hero { grid-template-columns: 1fr; padding: 56px 6vw 48px; text-align:center; }
       .hero h1, .hero-sub { max-width: 100%; margin-left:auto; margin-right:auto; }
       .hero-actions, .hero-stats { justify-content: center; }
-      .hero-visual { min-height: 340px; margin-top: 20px; order: -1; }
+      .hero-visual { min-height: 340px; margin-top: 28px; }
       .phone { width: 220px; }
       .float-card.fc1 { left: 2%; }
       .float-card.fc2 { right: 0%; }
     }
 
     /* ── STATS BAR ── */
+    .stats-bar-wrap {
+      display: flex; justify-content: center;
+      padding: 0 5vw 96px; margin-top: -40px;
+      position: relative; z-index: 2;
+    }
     .stats-bar {
       display: flex; flex-wrap: wrap; justify-content: center; gap: 0;
       background: var(--white);
@@ -532,6 +537,7 @@
     @media (max-width: 900px) {
       .section { padding: 64px 6vw; }
       .pricing-grid { max-width: 640px; }
+      .stats-bar-wrap { padding-bottom: 56px; margin-top: -28px; }
     }
 
     @media (max-width: 600px) {
@@ -548,6 +554,8 @@
       .section { padding: 52px 6vw; }
       .section-title { font-size: 1.6rem; }
       .section-sub { margin-bottom: 32px; }
+
+      .stats-bar-wrap { padding-bottom: 36px; margin-top: -20px; }
 
       .email-form { flex-direction: column; }
       .email-form input, .email-form button { width: 100%; }
@@ -672,7 +680,7 @@
     </div>
   </section>
 
-  <div style="display:flex; justify-content:center; padding: 0 5vw 96px; margin-top:-40px; position:relative; z-index:2;">
+  <div class="stats-bar-wrap">
     <div class="stats-bar">
       <div class="stat"><span class="stat-num">40%</span><span class="stat-label">Fewer no-shows</span></div>
       <div class="stat"><span class="stat-num">30 days</span><span class="stat-label">Free trial · No card</span></div>
@@ -901,6 +909,7 @@
         <div class="col">
           <span class="col-title">Company</span>
           <a href="contact.html">Contact</a>
+          <a href="feedback.html">Give feedback</a>
           <a href="mailto:vitarhealthcare@gmail.com">vitarhealthcare@gmail.com</a>
           <a href="https://wa.me/2347016479713" target="_blank" rel="noopener">WhatsApp: +234 701 647 9713</a>
         </div>
@@ -912,6 +921,7 @@
     </div>
   </footer>
 
+  <script src="forms-config.js"></script>
   <script>
     // Scroll reveal
     const reveals = document.querySelectorAll('.reveal');
@@ -929,7 +939,7 @@
         return;
       }
       emailInput.style.borderColor = '';
-      // TODO: connect to your backend /api/v1/waitlist or Mailchimp
+      submitWaitlist({ email: email, source: 'homepage' });
       document.querySelector('.email-form').style.display = 'none';
       document.getElementById('success-msg').style.display = 'block';
     }
