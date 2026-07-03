@@ -39,6 +39,7 @@
   <!-- Favicons & App Icons -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
@@ -302,55 +303,100 @@
     .hstat-label { font-size: 0.76rem; color: var(--slate); font-weight: 500; }
 
     /* ── HERO VISUAL (single dashboard preview anchor) ── */
-    .hero-visual { position: relative; display: flex; flex-direction: column; align-items: center; gap: 18px; min-height: 420px; justify-content: center; }
+    .hero-visual { position: relative; display: flex; flex-direction: column; align-items: center; gap: 22px; min-height: 420px; justify-content: center; }
     .hv-glow {
       position: absolute; width: 420px; height: 420px; border-radius: 50%;
       background: radial-gradient(circle, rgba(13,148,136,0.16) 0%, transparent 70%);
       z-index: 0;
     }
+    .hero-phone-wrap {
+      position: relative; z-index: 1;
+      width: 100%; max-width: 272px;
+    }
     .hero-phone {
-      position: relative; z-index: 1; width: 100%; max-width: 300px;
-      aspect-ratio: 9 / 18.5; background: #0b1220; border-radius: 34px;
-      padding: 10px; box-shadow: 0 30px 60px -12px rgba(10,22,40,0.35), 0 0 0 1px rgba(10,22,40,0.08);
+      position: relative; width: 100%;
+      aspect-ratio: 9 / 17.6;
+      background: linear-gradient(160deg, #16223a 0%, #0b1220 60%, #080d17 100%);
+      border-radius: 40px;
+      padding: 12px;
+      box-shadow:
+        0 36px 70px -18px rgba(10,22,40,0.45),
+        0 0 0 1px rgba(255,255,255,0.08) inset,
+        0 0 0 1px rgba(10,22,40,0.1);
+    }
+    .hero-phone::after {
+      content: ''; position: absolute; right: -2px; top: 78px;
+      width: 3px; height: 42px; background: #0b1220; border-radius: 2px 0 0 2px;
     }
     .hero-phone-screen {
-      position: relative; width: 100%; height: 100%; background: linear-gradient(180deg,#e9f7f4,#f4fbfa);
-      border-radius: 24px; overflow: hidden; padding: 34px 12px 14px;
-      display: flex; flex-direction: column; gap: 10px;
+      position: relative; width: 100%; height: 100%;
+      background: linear-gradient(180deg,#eefaf8 0%,#f8fcfb 55%,#ffffff 100%);
+      border-radius: 29px; overflow: hidden; padding: 30px 11px 12px;
+      display: flex; flex-direction: column; gap: 8px;
     }
     .hero-phone-notch {
-      position: absolute; top: 8px; left: 50%; transform: translateX(-50%);
-      width: 84px; height: 18px; background: #0b1220; border-radius: 12px;
+      position: absolute; top: 9px; left: 50%; transform: translateX(-50%); z-index: 3;
+      width: 78px; height: 19px; background: #0b1220; border-radius: 12px;
     }
-    .hp-header { font-family:'Sora',sans-serif; font-weight:800; font-size:0.72rem; color: var(--teal-dark); text-align:center; }
+    .hp-appbar {
+      display: flex; align-items: center; gap: 7px;
+      padding-bottom: 8px; margin-bottom: 2px;
+      border-bottom: 1px solid rgba(10,22,40,0.07);
+    }
+    .hp-avatar {
+      flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+      color: #fff; font-size: 0.52rem; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Sora', sans-serif;
+    }
+    .hp-appbar-text { min-width: 0; line-height: 1.25; }
+    .hp-appbar-text strong {
+      display: block; font-family:'Sora',sans-serif; font-weight: 800;
+      font-size: 0.64rem; color: var(--ink);
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+    .hp-appbar-text em {
+      font-style: normal; display: flex; align-items: center; gap: 4px;
+      font-size: 0.52rem; color: var(--teal-dark); font-weight: 700;
+    }
+    .hp-appbar-text em::before {
+      content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--teal);
+    }
+    .hp-time { margin-left: auto; flex-shrink: 0; font-size: 0.54rem; color: var(--slate); font-weight: 700; }
+    .hp-thread { display: flex; flex-direction: column; gap: 7px; }
     .hp-bubble {
-      background: #fff; border-radius: 14px; padding: 10px 12px;
-      font-size: 0.68rem; line-height: 1.5; color: var(--ink); box-shadow: 0 4px 10px rgba(10,22,40,0.06);
+      background: #fff; border-radius: 13px; border-top-left-radius: 4px; padding: 9px 11px;
+      font-size: 0.63rem; line-height: 1.5; color: var(--ink); box-shadow: 0 4px 10px rgba(10,22,40,0.06);
     }
     .hp-bubble b { color: var(--teal-dark); }
     .hp-confirm {
-      align-self: flex-start; background: var(--teal); color: #fff; font-weight: 700;
-      font-size: 0.68rem; border-radius: 14px; padding: 8px 14px; display:flex; align-items:center; gap:6px;
+      align-self: flex-end; background: var(--teal); color: #fff; font-weight: 700;
+      font-size: 0.62rem; border-radius: 13px; border-top-right-radius: 4px; padding: 7px 12px;
+      display: flex; align-items: center; gap: 5px; box-shadow: 0 4px 10px rgba(13,148,136,0.25);
+    }
+    .hp-seen {
+      align-self: flex-end; font-size: 0.48rem; color: var(--slate); font-weight: 600;
+      display: flex; align-items: center; gap: 3px; margin-top: -2px;
     }
     .hp-risk {
-      background: #fff; border-radius: 12px; padding: 10px 12px; margin-top: auto;
+      background: #fff; border-radius: 12px; padding: 9px 11px; margin-top: auto;
       box-shadow: 0 4px 10px rgba(10,22,40,0.06);
     }
-    .hp-risk-label { font-size: 0.58rem; font-weight: 800; letter-spacing: 0.04em; color: var(--slate); }
-    .hp-risk-track { height: 5px; background: var(--line); border-radius: 4px; margin-top: 6px; overflow: hidden; }
-    .hp-risk-track i { display:block; height:100%; width: 18%; background: var(--teal); border-radius: 4px; }
+    .hp-risk-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+    .hp-risk-label { font-size: 0.5rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: var(--slate); }
+    .hp-risk-pct { font-size: 0.54rem; font-weight: 800; color: var(--teal-dark); }
+    .hp-risk-track { height: 5px; background: var(--line); border-radius: 4px; overflow: hidden; }
+    .hp-risk-track i { display:block; height:100%; width: 18%; background: linear-gradient(90deg, var(--teal), var(--teal-dark)); border-radius: 4px; }
     .hp-float {
       position: absolute; z-index: 2; background: #fff; border-radius: 12px;
-      padding: 8px 12px; font-size: 0.68rem; font-weight: 700; color: var(--ink);
-      box-shadow: 0 10px 24px rgba(10,22,40,0.15); display: flex; align-items: center; gap: 6px;
+      padding: 8px 13px; font-size: 0.7rem; font-weight: 700; color: var(--ink);
+      box-shadow: 0 12px 26px rgba(10,22,40,0.16), 0 0 0 1px rgba(10,22,40,0.04);
+      display: flex; align-items: center; gap: 6px;
       white-space: nowrap;
     }
-    .hp-float.top { top: 6%; left: -8%; }
-    .hp-float.bottom { bottom: 10%; right: -10%; }
-    @media (max-width: 480px) {
-      .hp-float.top { left: 0; font-size: 0.62rem; }
-      .hp-float.bottom { right: 0; font-size: 0.62rem; }
-    }
+    .hp-float.top { top: -14px; right: -14px; }
+    .hp-float.bottom { bottom: -14px; left: -14px; }
     .hero-dash-stats { position: relative; z-index: 1; display: flex; gap: 14px; }
     .hero-dash-stat {
       display: flex; flex-direction: column; align-items: center; gap: 2px;
@@ -364,12 +410,24 @@
       .hero { grid-template-columns: 1fr; padding: 56px 6vw 48px; text-align:center; }
       .hero h1, .hero-sub { max-width: 100%; margin-left:auto; margin-right:auto; }
       .hero-actions, .hero-stats { justify-content: center; }
-      .hero-visual { min-height: 340px; margin-top: 28px; }
+      .hero-visual { min-height: 0; margin-top: 36px; }
+      .hero-phone-wrap { max-width: 240px; margin: 0 auto; }
+    }
+    @media (max-width: 480px) {
+      .hero-phone-wrap { max-width: 208px; }
+      .hp-float { padding: 7px 11px; font-size: 0.62rem; }
+      .hp-float.top { top: -10px; right: -8px; }
+      .hp-float.bottom { bottom: -10px; left: -8px; }
+    }
+    @media (max-width: 360px) {
+      .hero-phone-wrap { max-width: 184px; }
+      .hp-float { font-size: 0.56rem; padding: 6px 9px; gap: 4px; }
+      .hp-appbar-text strong { font-size: 0.58rem; }
+      .hp-time { font-size: 0.48rem; }
     }
 
     /* ── STATS BAR ── */
     .stats-bar-wrap {
-      display: flex; justify-content: center;
       padding: 0 5vw 56px; margin-top: -40px;
       position: relative; z-index: 2;
     }
@@ -387,6 +445,7 @@
       padding: 22px 24px;
       text-align: center;
       border-right: 1px solid var(--line);
+      border-bottom: 1px solid transparent;
       transition: background 0.2s;
     }
     .stat:hover { background: var(--mist); }
@@ -397,6 +456,18 @@
       color: var(--teal);
       display: block;
       overflow-wrap: break-word;
+    }
+    @media (max-width: 700px) {
+      .stats-bar { grid-template-columns: repeat(2, 1fr); }
+      .stat { padding: 18px 14px; }
+      .stat:nth-child(odd) { border-right: 1px solid var(--line); }
+      .stat:nth-child(even) { border-right: none; }
+      .stat:nth-child(1), .stat:nth-child(2) { border-bottom: 1px solid var(--line); }
+    }
+    @media (max-width: 340px) {
+      .stats-bar { grid-template-columns: 1fr; }
+      .stat { border-right: none !important; border-bottom: 1px solid var(--line); }
+      .stat:last-child { border-bottom: none; }
     }
     .stat-label { font-size: 0.78rem; color: var(--slate); margin-top: 2px; font-weight: 500; }
     .stats-bar-note { text-align: center; font-size: 0.7rem; color: var(--slate); opacity: 0.8; margin-top: 14px; padding: 0 6vw; }
@@ -785,9 +856,6 @@
 
     @media (max-width: 380px) {
       .hero h1 { font-size: 1.8rem; }
-      .stats-bar { grid-template-columns: repeat(2, 1fr); }
-      .stat:nth-child(2) { border-right: none; }
-      .stat:nth-child(1), .stat:nth-child(2) { border-bottom: 1px solid var(--line); }
     }
 
     /* ── SCROLL ANIMATIONS ── */
@@ -921,20 +989,35 @@
 
     <div class="hero-visual">
       <div class="hv-glow"></div>
-      <div class="hero-phone">
-        <div class="hero-phone-screen">
-          <div class="hero-phone-notch"></div>
-          <div class="hp-float top">📈 No-shows down 40%</div>
-          <p class="hp-header">Adeyemi Family Clinic</p>
-          <div class="hp-bubble">Hi Chiamaka 👋 this is a reminder that your appointment with <b>Dr. Adeyemi</b> is <b>tomorrow at 10:00 AM</b>.</div>
-          <div class="hp-bubble">Reply <b>1</b> to confirm or <b>2</b> to reschedule.</div>
-          <div class="hp-confirm">1 — Confirmed ✅</div>
-          <div class="hp-risk">
-            <span class="hp-risk-label">NO-SHOW RISK</span>
-            <div class="hp-risk-track"><i></i></div>
+      <div class="hero-phone-wrap">
+        <div class="hero-phone">
+          <div class="hero-phone-screen">
+            <div class="hero-phone-notch"></div>
+            <div class="hp-appbar">
+              <span class="hp-avatar">AF</span>
+              <div class="hp-appbar-text">
+                <strong>Adeyemi Clinic</strong>
+                <em>Reminder sent</em>
+              </div>
+              <span class="hp-time">10:24</span>
+            </div>
+            <div class="hp-thread">
+              <div class="hp-bubble">Hi Chiamaka 👋 this is a reminder that your appointment with <b>Dr. Adeyemi</b> is <b>tomorrow at 10:00 AM</b>.</div>
+              <div class="hp-bubble">Reply <b>1</b> to confirm or <b>2</b> to reschedule.</div>
+              <div class="hp-confirm">1 — Confirmed ✅</div>
+              <div class="hp-seen">Seen · 10:26 AM</div>
+            </div>
+            <div class="hp-risk">
+              <div class="hp-risk-top">
+                <span class="hp-risk-label">No-show risk</span>
+                <span class="hp-risk-pct">Low · 18%</span>
+              </div>
+              <div class="hp-risk-track"><i></i></div>
+            </div>
           </div>
-          <div class="hp-float bottom">📅 Booked in 5 min</div>
         </div>
+        <div class="hp-float top">📈 No-shows down 40%</div>
+        <div class="hp-float bottom">📅 Booked in 5 min</div>
       </div>
       <div class="hero-dash-stats">
         <div class="hero-dash-stat"><span class="hstat-num">Up to 40%</span><span class="hstat-label">Fewer no-shows*</span></div>
