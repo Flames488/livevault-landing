@@ -364,15 +364,24 @@
       content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--teal);
     }
     .hp-time { margin-left: auto; flex-shrink: 0; font-size: 0.54rem; color: var(--slate); font-weight: 700; }
-    .hp-thread { display: flex; flex-direction: column; gap: 7px; }
+    .hp-thread { display: flex; flex-direction: column; gap: 9px; overflow: hidden; }
+    .hp-msg-group { display: flex; flex-direction: column; gap: 4px; max-width: 88%; }
+    .hp-msg-group.left { align-self: flex-start; align-items: flex-start; }
+    .hp-msg-group.right { align-self: flex-end; align-items: flex-end; }
+    .hp-sender {
+      font-size: 0.46rem; font-weight: 800; letter-spacing: 0.02em;
+      text-transform: uppercase; color: var(--slate); padding: 0 3px;
+    }
+    .hp-msg-group.left .hp-sender { color: var(--teal-dark); }
+    .hp-msg-group.right .hp-sender { color: #6b7f99; }
     .hp-bubble {
-      background: #fff; border-radius: 13px; border-top-left-radius: 4px; padding: 9px 11px;
-      font-size: 0.63rem; line-height: 1.5; color: var(--ink); box-shadow: 0 4px 10px rgba(10,22,40,0.06);
+      background: #fff; border-radius: 13px; border-top-left-radius: 4px; padding: 8px 11px;
+      font-size: 0.6rem; line-height: 1.42; color: var(--ink); box-shadow: 0 4px 10px rgba(10,22,40,0.06);
     }
     .hp-bubble b { color: var(--teal-dark); }
     .hp-confirm {
-      align-self: flex-end; background: var(--teal); color: #fff; font-weight: 700;
-      font-size: 0.62rem; border-radius: 13px; border-top-right-radius: 4px; padding: 7px 12px;
+      align-self: flex-end; background: var(--teal); color: #fff; font-weight: 600;
+      font-size: 0.6rem; line-height: 1.42; border-radius: 13px; border-top-right-radius: 4px; padding: 8px 12px;
       display: flex; align-items: center; gap: 5px; box-shadow: 0 4px 10px rgba(13,148,136,0.25);
     }
     .hp-seen {
@@ -791,11 +800,38 @@
 
     /* ── FEEDBACK LINK (used in final CTA) ── */
     .feedback-inline-link {
-      font-size: 0.85rem; font-weight: 600;
-      color: var(--teal-lt); text-decoration: none;
-      transition: color 0.2s;
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 0.86rem; font-weight: 700;
+      color: #fff; text-decoration: none;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 999px;
+      padding: 12px 22px;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
     }
-    .feedback-inline-link:hover { color: #fff; text-decoration: underline; }
+    .feedback-inline-link:hover {
+      background: rgba(255,255,255,0.15);
+      border-color: rgba(255,255,255,0.4);
+      transform: translateY(-1px);
+    }
+
+    /* ── SCROLL TO TOP ── */
+    .scroll-top-btn {
+      position: fixed; right: 22px; bottom: 22px; z-index: 60;
+      width: 44px; height: 44px; border-radius: 50%; border: none;
+      background: var(--ink); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(10,22,40,0.28), 0 0 0 1px rgba(255,255,255,0.08) inset;
+      opacity: 0; visibility: hidden; transform: translateY(10px);
+      transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s, background 0.2s;
+    }
+    .scroll-top-btn.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+    .scroll-top-btn:hover { background: var(--teal-dark); }
+    .scroll-top-btn:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+    @media (max-width: 640px) {
+      .scroll-top-btn { right: 16px; bottom: 16px; width: 40px; height: 40px; }
+    }
 
     /* ── FOOTER ── */
     footer {
@@ -1002,9 +1038,23 @@
               <span class="hp-time">10:24</span>
             </div>
             <div class="hp-thread">
-              <div class="hp-bubble">Hi Chiamaka 👋 this is a reminder that your appointment with <b>Dr. Adeyemi</b> is <b>tomorrow at 10:00 AM</b>.</div>
-              <div class="hp-bubble">Reply <b>1</b> to confirm or <b>2</b> to reschedule.</div>
-              <div class="hp-confirm">1 — Confirmed ✅</div>
+              <div class="hp-msg-group left">
+                <span class="hp-sender">Adeyemi Clinic</span>
+                <div class="hp-bubble">Hi Chiamaka 👋 this is a reminder that your appointment with <b>Dr. Adeyemi</b> is <b>tomorrow at 10:00 AM</b>.</div>
+                <div class="hp-bubble">Reply <b>1</b> to confirm or <b>2</b> to reschedule.</div>
+              </div>
+              <div class="hp-msg-group right">
+                <span class="hp-sender">Chiamaka</span>
+                <div class="hp-confirm">1</div>
+              </div>
+              <div class="hp-msg-group left">
+                <span class="hp-sender">Adeyemi Clinic</span>
+                <div class="hp-bubble">You're confirmed ✅ Please arrive <b>10 mins early</b> for check-in.</div>
+              </div>
+              <div class="hp-msg-group right">
+                <span class="hp-sender">Chiamaka</span>
+                <div class="hp-confirm">Noted, thank you! 🙏</div>
+              </div>
               <div class="hp-seen">Seen · 10:26 AM</div>
             </div>
             <div class="hp-risk">
@@ -1285,7 +1335,7 @@
     <p class="section-label" style="text-align:center;">Built to be trusted</p>
     <h2 class="section-title reveal" style="margin:0 auto 16px;">How Vitar protects your patients' data</h2>
     <p class="section-sub reveal" style="margin-left:auto; margin-right:auto;">Clinics run on trust. Here's exactly what that means in practice, not just a badge.</p>
-    <p class="section-sub reveal" style="margin-left:auto; margin-right:auto; margin-top:-8px; font-weight:600; color: var(--ink-2);">Your clinic's patient information is encrypted and stored securely to help protect sensitive medical records.</p>
+    <p class="section-sub reveal" style="margin-left:auto; margin-right:auto; margin-top:-8px; font-weight:600; color: #5eead4;">Your clinic's patient information is encrypted and stored securely to help protect sensitive medical records.</p>
     <div class="trust-grid reveal">
       <div class="trust-card">
         <span class="icon">🔒</span>
@@ -1369,8 +1419,8 @@
       <a href="signup.html" class="btn-primary">Start Free Trial →</a>
       <a href="demo.html" class="btn-secondary" style="border-color: rgba(255,255,255,0.3); color:#fff;">Try Live Demo →</a>
     </div>
-    <p style="text-align:center; margin-top:22px;">
-      <a href="feedback.html" class="feedback-inline-link" style="color: rgba(255,255,255,0.75);">Already running a clinic? Tell us what you're dealing with today →</a>
+    <p style="text-align:center; margin-top:28px;">
+      <a href="feedback.html" class="feedback-inline-link">💬 Already running a clinic? Tell us what you're dealing with today →</a>
     </p>
   </section>
 
@@ -1421,6 +1471,13 @@
     </div>
   </footer>
 
+  <button id="scroll-top-btn" class="scroll-top-btn" aria-label="Scroll back to top" title="Back to top">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 19V5"></path>
+      <path d="M5 12l7-7 7 7"></path>
+    </svg>
+  </button>
+
   <script src="forms-config.js"></script>
   <script>
     function toggleMobileMenu() {
@@ -1456,6 +1513,22 @@
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
     }, { threshold: 0.12 });
     reveals.forEach(el => observer.observe(el));
+
+    // Scroll-to-top button
+    const scrollTopBtn = document.getElementById('scroll-top-btn');
+    let scrollTicking = false;
+    window.addEventListener('scroll', () => {
+      if (!scrollTicking) {
+        window.requestAnimationFrame(() => {
+          scrollTopBtn.classList.toggle('visible', window.scrollY > 480);
+          scrollTicking = false;
+        });
+        scrollTicking = true;
+      }
+    });
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 
   </script>
 
