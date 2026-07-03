@@ -24,7 +24,7 @@
  *      - Current no-show rate (estimate)
  *      - What do you use today to manage bookings?
  *      - Who books appointments at your clinic?
- *      - Would ₦2,500/month be reasonable for this? (willingness to pay)
+ *      - Would ₦6,000/month be reasonable for this? (willingness to pay)
  *      - Anything else you'd want this to do?
  *
  * 3. For EACH form: click the 3-dot menu (⋮) top-right → "Get pre-filled link".
